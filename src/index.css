@@ -939,7 +939,7 @@ h1 em::after {
 /* How It Works */
 .how-it-works-section {
   position: relative;
-  padding: 100px 4%;
+  padding: 100px 4% 60px;
   background: #11051f;
   color: white;
   overflow: hidden;
@@ -1056,7 +1056,7 @@ h1 em::after {
 .trending-editorial-section {
   position: relative;
   background: #fdfbfc; /* very subtle warm off-white */
-  padding: 100px 4% 80px;
+  padding: 40px 4% 80px;
   overflow: hidden;
 }
 
@@ -1140,21 +1140,6 @@ h1 em::after {
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto;
-}
-
-.trending-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 24px;
-}
-.trending-divider .line { height: 1px; width: 40px; background: rgba(124, 58, 237, 0.3); }
-.trending-divider .diamond {
-  width: 6px;
-  height: 6px;
-  background: #7c3aed;
-  transform: rotate(45deg);
 }
 
 /* Freeform Canvas */

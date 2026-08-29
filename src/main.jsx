@@ -396,11 +396,6 @@ function TrendingCollections() {
         <p className="trending-subtitle">
           Handpicked themes and moments that are<br className="desktop-br"/>making celebrations unforgettable.
         </p>
-        <div className="trending-divider">
-          <span className="line"></span>
-          <span className="diamond"></span>
-          <span className="line"></span>
-        </div>
       </div>
 
       {/* Freeform Editorial Canvas */}
