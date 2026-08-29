@@ -374,134 +374,84 @@ function HowItWorks() {
 function TrendingCollections() {
   return (
     <section className="trending-editorial-section">
-      <div className="trending-background">
-        <div className="trend-glow glow-left"></div>
-        <div className="trend-glow glow-right"></div>
-        <div className="trend-dots dot-group-1"></div>
-        <div className="trend-dots dot-group-2"></div>
-        <div className="trend-stars">
-          <Sparkles className="t-star s1" size={18} />
-          <Sparkles className="t-star s2" size={24} />
-          <Sparkles className="t-star s3" size={14} />
-          <Sparkles className="t-star s4" size={16} />
-        </div>
+      {/* Background layer elements */}
+      <div className="trending-bg-elements">
+        <div className="trend-glow glow-top-left"></div>
+        <div className="trend-glow glow-bottom-right"></div>
+        
+        {/* Reduced dots and stars */}
+        <div className="trend-dots dots-1"></div>
+        <div className="trend-dots dots-2"></div>
+        <Sparkles className="trend-star ts-1" size={16} />
+        <Sparkles className="trend-star ts-2" size={20} />
+        <Sparkles className="trend-star ts-3" size={14} />
       </div>
 
+      {/* Header */}
       <div className="trending-header">
         <span className="trending-eyebrow">— WHAT'S HOT RIGHT NOW —</span>
-        <h2 className="trending-title">Trending <span>Collections</span></h2>
+        <h2 className="trending-title">
+          <span className="title-dark">Trending</span> <span className="title-purple">Collections</span>
+        </h2>
         <p className="trending-subtitle">
-          Handpicked themes and moments that are<br/>making celebrations unforgettable.
+          Handpicked themes and moments that are<br className="desktop-br"/>making celebrations unforgettable.
         </p>
         <div className="trending-divider">
           <span className="line"></span>
-          <Sparkles size={10} className="diamond" />
+          <span className="diamond"></span>
           <span className="line"></span>
         </div>
       </div>
 
-      <div className="trending-editorial-wrapper">
+      {/* Freeform Editorial Canvas */}
+      <div className="trending-canvas">
         
-        {/* SVG Orbital Lines */}
-        <svg className="trending-svg-lines" viewBox="0 0 1550 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <path d="M 0 350 Q 250 100 450 350 T 800 300 T 1200 450 T 1550 250" stroke="rgba(112,37,189,0.15)" strokeWidth="1.5" fill="none" />
-          <path d="M 100 600 Q 350 400 550 500 T 900 600 T 1300 400 T 1600 500" stroke="rgba(112,37,189,0.1)" strokeWidth="1.5" fill="none" strokeDasharray="4 6" />
-          <circle cx="200" cy="275" r="3" fill="#7025bd" opacity="0.3" />
-          <circle cx="1050" cy="500" r="3" fill="#7025bd" opacity="0.3" />
-          <circle cx="1300" cy="400" r="3" fill="#7025bd" opacity="0.3" />
+        {/* Continuous SVG Connecting Line (Simplified) */}
+        <svg className="trending-connection-line" viewBox="0 0 1550 750" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M 150,300 Q 400,250 750,450 T 1350,300" fill="none" stroke="rgba(112,37,189,0.15)" strokeWidth="1" strokeDasharray="4,4" />
         </svg>
 
-        <div className="trend-col trend-weddings">
-          <div className="trend-img-container mask-organic">
+        {/* 01: Weddings (Left) */}
+        <div className="trend-item trend-weddings">
+          <div className="trend-number">01</div>
+          <div className="trend-img-wrapper organic-cutout">
             <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Weddings" />
           </div>
-          <div className="trend-badge badge-left">
-            <span className="badge-num">01</span>
-            <span className="badge-line"></span>
-          </div>
-          <div className="trend-content">
-            <h3>Weddings <Sparkles size={16} className="title-star" /></h3>
-            <p>Timeless moments,<br/>beautifully crafted</p>
-            <button className="btn-explore btn-white">
-              EXPLORE <span className="icon-circle"><ArrowRight size={14} /></span>
-            </button>
+          <div className="trend-content-below">
+            <h3 className="clean-title">Weddings</h3>
+            <p>Timeless moments,<br/>beautifully crafted.</p>
+            <a href="#" className="explore-link">EXPLORE <ArrowRight size={14} /></a>
           </div>
         </div>
 
-        <div className="trend-col trend-christmas">
-          <div className="trend-arch-container">
-            <div className="arch-border border-1"></div>
-            <div className="arch-border border-2"></div>
-            <div className="trend-img-container mask-arch">
-              <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?q=80&w=800&auto=format&fit=crop" alt="Christmas" />
-            </div>
-            <div className="trend-panel-center">
-              <div className="trend-badge-center">
-                <span className="badge-num">02</span>
-                <span className="badge-line"></span>
-              </div>
-              <div className="panel-text">
-                <h3>Christmas <Sparkles size={18} className="title-star" /></h3>
-                <p>Celebrate the season<br/>with joy & warmth</p>
-              </div>
-              <button className="btn-explore btn-purple">
-                EXPLORE <span className="icon-circle"><ArrowRight size={14} /></span>
-              </button>
+        {/* 02: Christmas (Center) */}
+        <div className="trend-item trend-christmas">
+          <div className="trend-number top-center">02</div>
+          <div className="trend-img-wrapper arch-cutout">
+            <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?q=80&w=800&auto=format&fit=crop" alt="Christmas" />
+            <div className="image-overlay-gradient"></div>
+            <div className="trend-text-overlay bottom-overlay">
+              <h3 className="overlay-title">CHRISTMAS</h3>
+              <p>Celebrate the season with joy & warmth.</p>
+              <a href="#" className="explore-link white-link">EXPLORE <ArrowRight size={14} /></a>
             </div>
           </div>
         </div>
 
-        <div className="trend-col trend-newyears">
-          <div className="trend-img-container mask-tilted">
+        {/* 03: New Years (Right) */}
+        <div className="trend-item trend-newyears">
+          <div className="bg-year">2027</div>
+          <div className="trend-number top-right">03</div>
+          <div className="trend-img-wrapper tilted-cutout">
             <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800&auto=format&fit=crop" alt="New Years" />
           </div>
-          <div className="trend-badge badge-right">
-            <span className="badge-num">03</span>
-            <span className="badge-line"></span>
-          </div>
-          <div className="trend-content">
-            <h3>New Years <Sparkles size={16} className="title-star" /></h3>
-            <p>New vibes, new beginnings,<br/>endless celebrations</p>
-            <button className="btn-explore btn-purple">
-              EXPLORE <span className="icon-circle"><ArrowRight size={14} /></span>
-            </button>
+          <div className="trend-content-below align-right">
+            <h3 className="clean-title">New Years</h3>
+            <p>New vibes, new beginnings,<br/>endless celebrations.</p>
+            <a href="#" className="explore-link">EXPLORE <ArrowRight size={14} /></a>
           </div>
         </div>
 
-      </div>
-
-      <div className="trending-benefits-bar">
-        <div className="benefit-item">
-          <div className="benefit-icon"><Gem size={20} /></div>
-          <div className="benefit-text">
-            <h4>Curated with Love</h4>
-            <p>Handpicked for memorable celebrations</p>
-          </div>
-        </div>
-        <div className="benefit-divider"></div>
-        <div className="benefit-item">
-          <div className="benefit-icon"><Star size={20} /></div>
-          <div className="benefit-text">
-            <h4>Trending Now</h4>
-            <p>What's popular and in demand</p>
-          </div>
-        </div>
-        <div className="benefit-divider"></div>
-        <div className="benefit-item">
-          <div className="benefit-icon"><Heart size={20} /></div>
-          <div className="benefit-text">
-            <h4>For Every Occasion</h4>
-            <p>Themes that fit every moment perfectly</p>
-          </div>
-        </div>
-        <div className="benefit-divider"></div>
-        <div className="benefit-item">
-          <div className="benefit-icon"><Calendar size={20} /></div>
-          <div className="benefit-text">
-            <h4>Easy to Plan</h4>
-            <p>Inspiration that makes planning effortless</p>
-          </div>
-        </div>
       </div>
     </section>
   )

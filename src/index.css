@@ -468,12 +468,12 @@ h1 em::after {
 
 .trusted-brands-marquee::before {
   left: 0;
-  background: linear-gradient(to right, #aa86d9, transparent);
+  /* background: linear-gradient(to right, #aa86d9, transparent); */
 }
 
 .trusted-brands-marquee::after {
   right: 0;
-  background: linear-gradient(to left, #aa86d9, transparent);
+  /* background: linear-gradient(to left, #aa86d9, transparent); */
 }
 
 .marquee-track {
@@ -1055,99 +1055,91 @@ h1 em::after {
 /* Trending Editorial Section */
 .trending-editorial-section {
   position: relative;
-  background: white;
-  padding: 100px 4% 30px;
+  background: #fdfbfc; /* very subtle warm off-white */
+  padding: 100px 4% 80px;
   overflow: hidden;
 }
 
-.trending-background {
+/* Background layer elements */
+.trending-bg-elements {
   position: absolute;
   inset: 0;
-  z-index: 0;
   pointer-events: none;
+  z-index: 0;
 }
 
 .trend-glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(120px);
 }
-
-.trend-glow.glow-left {
+.glow-top-left {
+  width: 500px;
+  height: 500px;
+  background: rgba(124, 58, 237, 0.05);
+  top: 10%;
+  left: -100px;
+}
+.glow-bottom-right {
   width: 600px;
   height: 600px;
-  background: rgba(167, 100, 255, 0.08);
+  background: rgba(124, 58, 237, 0.06);
   bottom: 0;
-  left: -200px;
-}
-
-.trend-glow.glow-right {
-  width: 700px;
-  height: 700px;
-  background: rgba(190, 150, 255, 0.12);
-  top: -200px;
-  right: -200px;
+  right: -100px;
 }
 
 .trend-dots {
   position: absolute;
   width: 150px;
   height: 150px;
-  background-image: radial-gradient(rgba(112,37,189,0.15) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(124, 58, 237, 0.12) 1.5px, transparent 1.5px);
   background-size: 15px 15px;
 }
-.dot-group-1 { top: 100px; left: 5%; }
-.dot-group-2 { bottom: 200px; right: 5%; }
+.dots-1 { top: 120px; left: 8%; }
+.dots-2 { bottom: 150px; right: 6%; }
 
-.trend-stars .t-star {
+.trend-star {
   position: absolute;
-  color: rgba(112,37,189,0.4);
+  color: rgba(124, 58, 237, 0.25);
   animation: pulse-star 4s infinite alternate ease-in-out;
+  z-index: 6; 
 }
-.t-star.s1 { top: 120px; left: 15%; animation-delay: 0s; }
-.t-star.s2 { top: 300px; right: 10%; animation-delay: 1s; }
-.t-star.s3 { bottom: 250px; left: 8%; animation-delay: 2s; }
-.t-star.s4 { bottom: 400px; right: 25%; animation-delay: 1.5s; }
-
-@keyframes pulse-star {
-  0% { transform: scale(0.8); opacity: 0.3; }
-  100% { transform: scale(1.2); opacity: 0.8; }
-}
+.ts-1 { top: 180px; left: 20%; animation-delay: 0s; }
+.ts-2 { top: 220px; right: 15%; animation-delay: 1.2s; }
+.ts-3 { bottom: 300px; left: 10%; animation-delay: 0.5s; }
 
 /* Header */
 .trending-header {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   text-align: center;
   margin-bottom: 70px;
 }
-
 .trending-eyebrow {
   display: block;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 3px;
-  color: #7025bd;
+  color: #7c3aed;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-
 .trending-title {
-  font-size: 68px;
+  font-size: 72px;
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
-  color: #1a1a24;
   margin: 0 0 16px;
   letter-spacing: -1px;
-  font-family: 'Playfair Display', Georgia, serif;
 }
-.trending-title span { color: #7025bd; }
+.title-dark { color: #17131F; }
+.title-purple { color: #7c3aed; }
 
 .trending-subtitle {
   font-size: 18px;
-  color: #62606A;
+  color: #66636D;
   line-height: 1.6;
-  margin: 0 auto;
   max-width: 600px;
+  margin: 0 auto;
 }
 
 .trending-divider {
@@ -1157,341 +1149,245 @@ h1 em::after {
   gap: 12px;
   margin-top: 24px;
 }
-.trending-divider .line { height: 1px; width: 40px; background: rgba(112,37,189,0.3); }
-.trending-divider .diamond { color: #7025bd; }
+.trending-divider .line { height: 1px; width: 40px; background: rgba(124, 58, 237, 0.3); }
+.trending-divider .diamond {
+  width: 6px;
+  height: 6px;
+  background: #7c3aed;
+  transform: rotate(45deg);
+}
 
-/* Main Composition */
-.trending-editorial-wrapper {
+/* Freeform Canvas */
+.trending-canvas {
   position: relative;
-  max-width: 1550px;
-  width: min(96vw, 1550px);
+  max-width: 1450px;
+  width: min(94vw, 1450px);
   margin: 0 auto;
-  height: 750px;
+  height: 650px;
   z-index: 2;
 }
 
-.trending-svg-lines {
+/* Continuous SVG Line */
+.trending-connection-line {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
+  opacity: 0.8;
 }
 
-.trend-col {
+/* Individual Trend Items */
+.trend-item {
   position: absolute;
-  z-index: 5;
+  z-index: 3; 
 }
 
-.trend-img-container {
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(112,37,189,0.1);
-  background: white;
+.trend-number {
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #7c3aed;
+  z-index: 4; 
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.trend-img-wrapper {
   position: relative;
+  overflow: hidden;
+  filter: drop-shadow(0 20px 40px rgba(90, 40, 150, 0.1));
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-.trend-img-container img {
+.trend-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.trend-badge {
-  position: absolute;
-  background: white;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(112,37,189,0.15);
-  border: 1px solid rgba(112,37,189,0.05);
-  transition: transform 0.4s ease;
-  z-index: 10;
+/* Content Below Images (Weddings & New Years) */
+.trend-content-below {
+  margin-top: 20px;
 }
-.badge-num { font-size: 32px; font-family: 'Playfair Display', serif; font-weight: 700; color: #7025bd; line-height: 1; }
-.badge-line { width: 20px; height: 1px; background: #c16bf0; margin-top: 8px; }
+.align-right { text-align: right; }
 
-.trend-content {
-  margin-top: 24px;
-  padding: 0 10px;
+.clean-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #17131F;
+  margin: 0 0 8px;
 }
-.trend-content h3 { font-size: 36px; font-family: 'Playfair Display', serif; font-weight: 700; color: #1a1a24; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
-.trend-content h3 .title-star { color: #a879e6; }
-.trend-content p { font-size: 16px; color: #62606A; margin: 0 0 20px; line-height: 1.5; }
+.trend-content-below p {
+  color: #66636D;
+  font-size: 15px;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
 
-/* Buttons */
-.btn-explore {
+/* Explore Link Base */
+.explore-link {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 10px 10px 10px 24px;
-  border-radius: 999px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.btn-explore .icon-circle { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; transition: transform 0.3s ease; }
-
-.btn-explore.btn-white { background: white; color: #7025bd; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-.btn-explore.btn-white .icon-circle { background: #f7f1ff; color: #7025bd; }
-.btn-explore.btn-white:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
-
-.btn-explore.btn-purple { background: #7025bd; color: white; box-shadow: 0 10px 25px rgba(112,37,189,0.3); }
-.btn-explore.btn-purple .icon-circle { background: white; color: #7025bd; }
-.btn-explore.btn-purple:hover { background: #5a1ca1; box-shadow: 0 15px 30px rgba(112,37,189,0.4); }
-
-.btn-explore:hover .icon-circle { transform: translateX(3px); }
-
-/* Column: Weddings (Left) */
-.trend-weddings {
-  left: 50px;
-  top: 80px;
-  width: 420px;
-}
-.mask-organic {
-  height: 480px;
-  border-radius: 180px 100px 80px 140px;
-}
-.trend-weddings .badge-left {
-  top: 150px;
-  left: -40px;
-}
-.trend-weddings:hover .trend-img-container img { transform: scale(1.025); }
-.trend-weddings:hover .trend-badge { transform: translateY(-3px); }
-
-/* Column: Christmas (Center) */
-.trend-christmas {
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: 480px;
-  z-index: 10;
-}
-.trend-arch-container {
+  letter-spacing: 2px;
+  color: #7c3aed;
+  text-decoration: none;
+  text-transform: uppercase;
   position: relative;
-  padding: 10px;
 }
-.mask-arch {
-  height: 600px;
-  border-radius: 240px 240px 35px 35px;
+.explore-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.align-right .explore-link::after {
+  left: auto;
+  right: 0;
+}
+.trend-item:hover .explore-link::after { width: 100%; }
+.explore-link svg { transition: transform 0.3s ease; }
+.trend-item:hover .explore-link svg { transform: translateX(4px); }
+
+
+/* --- 01: Weddings (Left) --- */
+.trend-weddings {
+  top: 80px;
+  left: 8%;
+  width: 340px;
+}
+.trend-weddings .trend-number {
+  top: -20px;
+  left: -20px;
+}
+.organic-cutout {
+  width: 100%;
+  height: 460px;
+  /* Smoother, simpler organic shape */
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+.trend-weddings:hover .trend-img-wrapper { transform: scale(1.02); }
+
+
+/* --- 02: Christmas (Center) --- */
+.trend-christmas {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  z-index: 4; 
+}
+.trend-christmas .top-center {
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 38px;
+}
+.arch-cutout {
+  width: 100%;
+  height: 540px;
+  border-radius: 210px 210px 20px 20px;
+}
+.image-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 8, 40, 0.6) 0%, transparent 40%);
+  transition: opacity 0.4s ease;
   z-index: 2;
 }
-.arch-border {
+.trend-christmas .trend-text-overlay {
   position: absolute;
-  border-radius: 250px 250px 45px 45px;
-  border: 1px solid rgba(112,37,189,0.2);
-  pointer-events: none;
-}
-.arch-border.border-1 { inset: -15px; border-bottom: none; border-style: dashed; }
-.arch-border.border-2 { inset: -30px; border-bottom: none; opacity: 0.5; }
-
-.trend-panel-center {
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  background: white;
-  border-radius: 36px;
-  padding: 24px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 20px 50px rgba(112,37,189,0.15);
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
   z-index: 5;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-
-.trend-badge-center {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: #fdfcff;
-  border: 1px solid #f0e6ff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.trend-badge-center .badge-num { font-size: 26px; }
-
-.trend-panel-center .panel-text {
-  flex-grow: 1;
-  padding: 0 20px;
-}
-.panel-text h3 { font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 700; color: #1a1a24; margin: 0 0 4px; display: flex; align-items: center; gap: 6px; }
-.panel-text p { font-size: 14px; color: #62606A; margin: 0; line-height: 1.4; }
-
-.btn-arrow-purple {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #7025bd;
+.overlay-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
   color: white;
-  border: none;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(112,37,189,0.3);
+  margin: 0 0 8px;
+  letter-spacing: 1px;
 }
+.trend-christmas p {
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  margin: 0 0 16px;
+}
+.white-link { color: white; }
 
-.trend-christmas:hover .trend-img-container img { transform: scale(1.015); }
-.trend-christmas:hover .trend-panel-center { transform: translate(-50%, -5px); box-shadow: 0 25px 60px rgba(112,37,189,0.2); }
-.trend-christmas:hover .btn-arrow-purple { background: #5a1ca1; transform: translateX(3px); }
+.trend-christmas:hover .trend-img-wrapper { transform: scale(1.015); }
+.trend-christmas:hover .image-overlay-gradient { background: linear-gradient(to top, rgba(20, 8, 40, 0.75) 0%, transparent 45%); }
 
-/* Column: New Years (Right) */
+
+/* --- 03: New Years (Right) --- */
 .trend-newyears {
-  right: 50px;
   top: 100px;
-  width: 400px;
+  right: 8%;
+  width: 350px;
 }
-.mask-tilted {
+.bg-year { display: none; /* Removed giant background text */ }
+.trend-newyears .trend-number.top-right {
+  top: -20px;
+  right: -10px;
+}
+.tilted-cutout {
+  width: 100%;
   height: 440px;
-  border-radius: 80px 40px 100px 60px;
-  transform: rotate(3deg);
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Simple smooth shape, slightly tilted */
+  border-radius: 40px 100px 40px 40px;
+  transform: rotate(2.5deg);
 }
-.trend-newyears .badge-right {
-  top: 100px;
-  right: -40px;
-}
-.trend-newyears:hover .mask-tilted { transform: rotate(1deg) translateY(-5px); }
-.trend-newyears:hover .trend-badge { transform: translateY(-3px); }
+.trend-newyears:hover .tilted-cutout { transform: rotate(1deg) scale(1.02); }
 
-/* Carousel Indicator */
-.trending-carousel-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 50px;
-}
-.nav-arrow { color: #a879e6; cursor: pointer; transition: color 0.3s; }
-.nav-arrow.inactive { color: rgba(168, 121, 230, 0.3); cursor: default; }
-.nav-arrow.active:hover { color: #7025bd; }
-.nav-dash { width: 24px; height: 3px; background: rgba(168, 121, 230, 0.3); border-radius: 3px; transition: all 0.3s ease; cursor: pointer; }
-.nav-dash.active { width: 32px; background: #7025bd; }
 
-/* Benefits Bar */
-.trending-benefits-bar {
-  max-width: 1350px;
-  width: min(94vw, 1350px);
-  margin: 30px auto 0;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 40px;
-  box-shadow: 0 15px 40px rgba(112,37,189,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 40px;
-  position: relative;
-  z-index: 5;
-}
+/* --- Responsive Overrides --- */
 
-.benefit-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  padding: 0 10px;
-}
-
-.benefit-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #fdfcff;
-  border: 1px solid #f0e6ff;
-  color: #7025bd;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-
-.benefit-text h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #1a1a24;
-  margin: 0 0 4px;
-}
-.benefit-text p {
-  font-size: 12px;
-  color: #62606A;
-  margin: 0;
-  line-height: 1.4;
-}
-
-.benefit-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(112,37,189,0.1);
-  margin: 0 20px;
-}
-
-/* Responsive Overrides */
 @media (max-width: 1440px) {
-  .trending-editorial-wrapper {
-    height: 700px;
-  }
-  .trend-weddings { width: 360px; }
-  .mask-organic { height: 400px; }
-  
-  .trend-christmas { width: 420px; }
-  .mask-arch { height: 520px; border-radius: 210px 210px 35px 35px; }
-  
-  .trend-newyears { width: 340px; }
-  .mask-tilted { height: 380px; }
-  
-  .trending-benefits-bar {
-    padding: 24px;
-  }
-  .benefit-item { padding: 0 5px; gap: 12px; }
+  .trend-weddings { left: 4%; }
+  .trend-newyears { right: 4%; }
 }
 
 @media (max-width: 1200px) {
-  .trending-editorial-wrapper {
-    height: 600px;
-  }
-  .trend-weddings { width: 300px; left: 0; }
-  .mask-organic { height: 340px; }
-  .trend-weddings .badge-left { width: 80px; height: 80px; left: -20px; }
+  .trending-canvas { height: 550px; }
+  .trend-number { font-size: 36px; }
+  
+  .trend-weddings { width: 280px; left: 0; }
+  .organic-cutout { height: 380px; }
   
   .trend-christmas { width: 360px; }
-  .mask-arch { height: 460px; border-radius: 180px 180px 30px 30px; }
-  .trend-panel-center { padding: 16px 20px; width: 95%; }
+  .arch-cutout { height: 480px; }
   
-  .trend-newyears { width: 280px; right: 0; }
-  .mask-tilted { height: 320px; }
-  .trend-newyears .badge-right { width: 80px; height: 80px; right: -20px; }
-  .badge-num { font-size: 24px; }
+  .trend-newyears { width: 290px; right: 0; }
+  .tilted-cutout { height: 380px; }
   
-  .trending-svg-lines { display: none; }
-  
-  .benefit-text p { display: none; } /* Hide description on tablet */
+  .trending-connection-line { display: none; }
 }
 
 @media (max-width: 900px) {
-  .trending-editorial-wrapper {
+  .trending-editorial-section { padding: 80px 4% 40px; }
+  .trending-title { font-size: 48px; }
+  .desktop-br { display: none; }
+  
+  .trending-canvas {
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 80px;
   }
-  .trend-col {
+  
+  .trend-item {
     position: relative;
     top: auto !important;
     left: auto !important;
@@ -1499,24 +1395,24 @@ h1 em::after {
     bottom: auto !important;
     transform: none !important;
     width: 100% !important;
-    max-width: 450px;
+    max-width: 500px;
   }
   
-  .trend-weddings .badge-left, .trend-newyears .badge-right {
-    left: -10px;
-    right: auto;
-  }
+  .trend-christmas { order: 1; margin-bottom: 20px; }
+  .trend-weddings { order: 2; }
+  .trend-newyears { order: 3; }
   
-  .trending-benefits-bar {
-    flex-direction: column;
-    gap: 20px;
-    padding: 30px;
-    border-radius: 30px;
-  }
-  .benefit-item { width: 100%; justify-content: flex-start; }
-  .benefit-divider { width: 100%; height: 1px; margin: 0; }
-  .benefit-text p { display: block; }
+  .align-right { text-align: left; }
+  .align-right .explore-link::after { left: 0; right: auto; }
 }
+
+@media (max-width: 600px) {
+  .trending-title { font-size: 38px; }
+  .arch-cutout { height: 440px; }
+  .organic-cutout { height: 400px; }
+  .tilted-cutout { height: 400px; }
+}
+
 
 /* Why Choose Us — Connected Nodes */
 .wcu-editorial {
