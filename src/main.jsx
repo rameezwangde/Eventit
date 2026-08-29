@@ -669,11 +669,140 @@ function WhyChooseUs() {
 
 function CallToAction() {
   return (
-    <section className="cta-banner">
-      <div className="cta-content">
-        <h2>Ready to start planning?</h2>
-        <p>Join thousands of event planners who trust Eventit to organize perfect events.</p>
-        <button className="cta-btn">Create your event <ArrowRight size={18} /></button>
+    <section className="cta-section">
+      {/* Outer Glows */}
+      <div className="cta-outer-glow cta-og-left"></div>
+      <div className="cta-outer-glow cta-og-right"></div>
+      
+      <div className="cta-container">
+        
+        {/* Internal Background Details */}
+        <div className="cta-bg-elements">
+          <div className="cta-dots cta-dots-l"></div>
+          <div className="cta-dots cta-dots-r"></div>
+          
+          <div className="cta-arc-bl"></div>
+          <div className="cta-arc-br"></div>
+          <div className="cta-arc-br-inner"></div>
+
+          <Sparkles size={16} className="cta-star cs-1" />
+          <Sparkles size={12} className="cta-star cs-2" />
+          <Sparkles size={20} className="cta-star cs-3" />
+          <Sparkles size={14} className="cta-star cs-4" />
+          <Sparkles size={18} className="cta-star cs-5" />
+          
+          {/* Subtle curved lines inside bg */}
+          <svg className="cta-bg-curves" viewBox="0 0 1000 600" fill="none" preserveAspectRatio="none">
+            <path d="M-100,500 C100,300 300,600 500,400 C700,200 900,500 1100,300" stroke="rgba(255,255,255,0.03)" strokeWidth="2" />
+            <path d="M-100,450 C200,250 400,550 600,350 C800,150 1000,450 1200,250" stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
+          </svg>
+        </div>
+
+        {/* Content Wrapper */}
+        <div className="cta-content-wrapper">
+          
+          <div className="cta-eyebrow-row">
+            <span className="cta-eyebrow-line"></span>
+            <span className="cta-eyebrow">Let's Make It Happen</span>
+            <span className="cta-eyebrow-line"></span>
+          </div>
+          
+          <h2 className="cta-heading">
+            <span className="ch-white">Ready to</span><br/>
+            <span className="ch-white">start </span><span className="ch-lavender">planning?</span>
+          </h2>
+
+          <div className="cta-divider">
+            <span className="cd-line"></span>
+            <span className="cd-diamond"></span>
+            <span className="cd-line"></span>
+          </div>
+
+          <p className="cta-support">
+            Join thousands of event planners who trust Eventit<br className="desktop-br"/>
+            to organize perfect events.
+          </p>
+
+          {/* Button Area */}
+          <div className="cta-button-area">
+            
+            {/* Decorative Dashed Arrow */}
+            <div className="cta-dashed-arrow">
+              <svg viewBox="0 0 200 100" fill="none">
+                <path d="M20,80 Q50,0 160,50" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeDasharray="6 6" fill="none" />
+                <path d="M150,40 L165,52 L150,65" stroke="rgba(255,255,255,0.4)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+
+            {/* Main Button */}
+            <button className="cta-primary-btn">
+              <div className="cta-btn-icon-left">
+                <CalendarDays size={24} />
+              </div>
+              <span className="cta-btn-text">Create your event</span>
+              <div className="cta-btn-icon-right">
+                <ArrowRight size={24} />
+              </div>
+              
+              {/* Radiating Lines */}
+              <div className="cta-radiating-lines">
+                <span className="rad-line rl-1"></span>
+                <span className="rad-line rl-2"></span>
+                <span className="rad-line rl-3"></span>
+                <span className="rad-line rl-4"></span>
+                <span className="rad-line rl-5"></span>
+              </div>
+            </button>
+          </div>
+
+          {/* Trust Strip */}
+          <div className="cta-trust-strip">
+            
+            <div className="trust-item">
+              <div className="trust-icon"><ShieldCheck size={26} /></div>
+              <div className="trust-text">
+                <span className="tt-intro">Trusted by</span>
+                <span className="tt-main">10K+ Planners</span>
+                <span className="tt-desc">Plan with confidence</span>
+              </div>
+            </div>
+
+            <div className="trust-divider"></div>
+
+            <div className="trust-item">
+              <div className="trust-icon"><Zap size={26} /></div>
+              <div className="trust-text">
+                <span className="tt-intro">Quick & Easy</span>
+                <span className="tt-main">Setup</span>
+                <span className="tt-desc">Get started in minutes</span>
+              </div>
+            </div>
+
+            <div className="trust-divider"></div>
+
+            <div className="trust-item">
+              <div className="trust-icon"><Users size={26} /></div>
+              <div className="trust-text">
+                <span className="tt-intro">Everything You Need</span>
+                <span className="tt-main">In One Place</span>
+                <span className="tt-desc">Venues, vendors & more</span>
+              </div>
+            </div>
+
+            <div className="trust-divider"></div>
+
+            <div className="trust-item">
+              <div className="trust-icon"><Heart size={26} /></div>
+              <div className="trust-text">
+                <span className="tt-intro">Loved by</span>
+                <span className="tt-main">Happy Planners</span>
+                <span className="tt-desc">Real stories, real results</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </section>
   )
