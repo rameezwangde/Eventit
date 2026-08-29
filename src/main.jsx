@@ -323,10 +323,6 @@ function ExploreServices() {
         </div>
 
       </div>
-
-      <div className="orbital-footer">
-        <Sparkles size={14} className="star-icon" /> DREAM IT. PLAN IT. LIVE IT. <Sparkles size={14} className="star-icon" />
-      </div>
     </section>
   )
 }
