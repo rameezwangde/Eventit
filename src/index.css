@@ -2398,7 +2398,7 @@ h1 em::after {
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .header-actions {
     gap: 10px;
   }
@@ -2423,9 +2423,17 @@ h1 em::after {
   }
 
   .hero-visual {
-    height: 500px;
-    background-size: auto 560px;
-    background-position: 68% 23%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background-image: url('/mobile.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-mask-image: none;
+    mask-image: none;
+    clip-path: none;
+    margin-bottom: 0;
   }
 
   .benefits {
