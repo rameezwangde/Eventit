@@ -280,13 +280,14 @@ h1 em::after {
 }
 
 .hero-visual {
-  height: min(126vw, 550px);
-  margin: 2px -1px 0;
+  height: 450px;
+  margin: 2px -1px -80px;
   background-image: url('/hero.png');
   background-repeat: no-repeat;
-  background-size: auto 610px;
-  background-position: 70% 28%;
+  background-size: cover;
+  background-position: right top;
   filter: saturate(1.03);
+  clip-path: inset(0 0 150px 0);
 }
 
 /* Search Bar */
@@ -3142,12 +3143,9 @@ h1 em::after {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .orbit-card-wrapper:nth-child(even) {
-    transform: rotate(2deg);
-  }
-
+  .orbit-card-wrapper:nth-child(even),
   .orbit-card-wrapper:nth-child(odd) {
-    transform: rotate(-2deg);
+    transform: none;
   }
 }
 
