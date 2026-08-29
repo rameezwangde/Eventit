@@ -1522,7 +1522,7 @@ h1 em::after {
 .wcu-editorial {
   position: relative;
   background: #fdfcff;
-  padding: 60px 4% 80px;
+  padding: 60px 4% 20px;
   overflow: hidden;
 }
 
@@ -1812,7 +1812,7 @@ h1 em::after {
 }
 
 @media (max-width: 600px) {
-  .wcu-editorial { padding: 80px 4% 80px; }
+  .wcu-editorial { padding: 60px 4% 40px; }
   .wcu-heading { font-size: 38px; }
   .wcu-intro { font-size: 16px; }
   
