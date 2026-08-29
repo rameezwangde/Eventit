@@ -1056,7 +1056,7 @@ h1 em::after {
 .trending-editorial-section {
   position: relative;
   background: white;
-  padding: 100px 4% 80px;
+  padding: 100px 4% 30px;
   overflow: hidden;
 }
 
@@ -1387,7 +1387,7 @@ h1 em::after {
 .trending-benefits-bar {
   max-width: 1350px;
   width: min(94vw, 1350px);
-  margin: 60px auto 0;
+  margin: 30px auto 0;
   background: rgba(255,255,255,0.9);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -1522,7 +1522,7 @@ h1 em::after {
 .wcu-editorial {
   position: relative;
   background: #fdfcff;
-  padding: 60px 4% 20px;
+  padding: 20px 4% 20px;
   overflow: hidden;
 }
 
