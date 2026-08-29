@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import {
   ArrowRight, Building2, CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Headphones, Heart,
   LockKeyhole, MapPin, Menu, Search, ShieldCheck, ShoppingCart, Sparkles, Users, Zap, Tag, Package, Navigation,
-  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star
+  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star, Timer
 } from 'lucide-react'
 import './index.css'
 
@@ -444,8 +444,8 @@ function TrendingCollections() {
                 <h3>Christmas <Sparkles size={18} className="title-star" /></h3>
                 <p>Celebrate the season<br/>with joy & warmth</p>
               </div>
-              <button className="btn-arrow-purple">
-                <ArrowRight size={16} />
+              <button className="btn-explore btn-purple">
+                EXPLORE <span className="icon-circle"><ArrowRight size={14} /></span>
               </button>
             </div>
           </div>
@@ -468,14 +468,6 @@ function TrendingCollections() {
           </div>
         </div>
 
-      </div>
-
-      <div className="trending-carousel-indicator">
-        <ChevronLeft size={16} className="nav-arrow inactive" />
-        <span className="nav-dash active"></span>
-        <span className="nav-dash"></span>
-        <span className="nav-dash"></span>
-        <ChevronRight size={16} className="nav-arrow active" />
       </div>
 
       <div className="trending-benefits-bar">
@@ -518,73 +510,158 @@ function TrendingCollections() {
 function WhyChooseUs() {
   return (
     <section className="wcu-editorial">
-      <div className="wcu-inner">
+      {/* Decorative Background Elements */}
+      <div className="wcu-bg-layer">
+        <div className="wcu-glow wcu-glow-tl"></div>
+        <div className="wcu-glow wcu-glow-br"></div>
         
-        <div className="wcu-top-bar">
-          <span className="wcu-eyebrow">— WHY EVENTIT —</span>
-          <h2 className="wcu-heading">The <span>Unfair Advantage</span><br/>for Event Planners</h2>
+        <div className="wcu-dots wcu-dots-tl"></div>
+        <div className="wcu-dots wcu-dots-tr"></div>
+        <div className="wcu-dots wcu-dots-bl"></div>
+
+        {/* Partial arc right side */}
+        <div className="wcu-arc-tr"></div>
+        
+        <div className="wcu-sparkles">
+          <Sparkles className="wcu-sparkle s1" size={14} />
+          <Sparkles className="wcu-sparkle s2" size={20} />
+          <Sparkles className="wcu-sparkle s3" size={12} />
+          <Sparkles className="wcu-sparkle s4" size={16} />
+          <Sparkles className="wcu-sparkle s5" size={18} />
+        </div>
+      </div>
+
+      <div className="wcu-content-wrapper">
+        
+        {/* Header Section */}
+        <div className="wcu-header">
+          <span className="wcu-eyebrow"><span className="eyebrow-line"></span>WHY CHOOSE US<span className="eyebrow-line"></span></span>
+          <h2 className="wcu-heading">
+            <span className="h-dark">More Than a Platform.</span><br/>
+            <span className="h-purple">A Partner</span> <span className="h-dark">in Every Event.</span>
+          </h2>
+          <div className="wcu-divider">
+            <span className="div-line"></span>
+            <span className="div-diamond"></span>
+            <span className="div-line"></span>
+          </div>
+          <p className="wcu-intro">
+            Eventit is the only centralized platform that provides<br className="desktop-br"/>
+            event planners with everything they need to organize their events.<br className="desktop-br"/>
+            Eventit makes it <strong>easy</strong>, <strong>fast</strong>, <strong>convenient</strong> and <strong>cost effective</strong><br className="desktop-br"/>
+            to organize any kind of event.
+          </p>
         </div>
 
-        <div className="wcu-bento">
+        {/* Benefits Node System */}
+        <div className="wcu-node-system">
           
-          {/* Hero Card — spans 2 rows */}
-          <div className="bento-card bento-hero">
-            <div className="bento-hero-inner">
+          {/* Connecting Line (SVG) */}
+          <div className="wcu-connector">
+            <svg width="100%" height="200" viewBox="0 0 1200 200" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Smooth cubic bezier wave matching node positions */}
+              <path d="M-50,100 C100,50 200,150 350,100 C500,50 600,150 750,100 C900,50 1000,150 1150,100 C1250,50 1300,100 1300,100" 
+                    stroke="var(--evt-purple)" strokeWidth="1.5" strokeDasharray="6 6" opacity="0.3" className="wcu-path" />
+              
+              {/* Glowing dots along the path */}
+              <circle cx="150" cy="98" r="3" fill="#7025bd" opacity="0.5" />
+              <circle cx="550" cy="98" r="3" fill="#7025bd" opacity="0.5" />
+              <circle cx="950" cy="98" r="3" fill="#7025bd" opacity="0.5" />
+            </svg>
+          </div>
 
-              <Tag size={28} className="bento-hero-icon" />
-              <h3>Best Price<br/>Guarantee</h3>
-              <p>Transparent pricing. No hidden fees. We negotiate directly with vendors so you always get the best possible rate — guaranteed.</p>
-              <div className="bento-hero-stat">
-                <span className="hero-stat-num">30%</span>
-                <span className="hero-stat-label">avg. savings vs<br/>booking directly</span>
+          <div className="wcu-nodes-grid">
+            
+            {/* Node 1 */}
+            <div className="wcu-node-item n1">
+              <div className="wcu-circle-container">
+                <div className="circle-glow"></div>
+                <div className="circle-ring r3"></div>
+                <div className="circle-ring r2"></div>
+                <div className="circle-main">
+                  <Tag size={48} className="node-icon" strokeWidth={1.5} />
+                </div>
+                <div className="vertical-connector">
+                  <div className="v-line"></div>
+                  <div className="v-dot"></div>
+                  <div className="v-horiz"></div>
+                </div>
+              </div>
+              <div className="node-text">
+                <h3>Best Price<br/>Guarantee</h3>
+                <div className="node-sep"></div>
+                <p>Transparent pricing with no<br/>hidden fees. Get the best deals<br/>from verified vendors.</p>
               </div>
             </div>
-          </div>
 
-          {/* Top Right */}
-          <div className="bento-card bento-std bento-b">
-
-            <div className="bento-std-icon"><Package size={22} /></div>
-            <h4>Unlimited Supplies</h4>
-            <p>Access a vast catalog of supplies, equipment & services — no matter the scale of your event.</p>
-          </div>
-
-          {/* Stats strip */}
-          <div className="bento-card bento-stats">
-            <div className="bento-stat-item">
-              <span className="bs-num">500+</span>
-              <span className="bs-label">Vendors</span>
+            {/* Node 2 */}
+            <div className="wcu-node-item n2">
+              <div className="wcu-circle-container">
+                <div className="circle-glow"></div>
+                <div className="circle-ring r3"></div>
+                <div className="circle-ring r2"></div>
+                <div className="circle-main">
+                  <Package size={48} className="node-icon" strokeWidth={1.5} />
+                </div>
+                <div className="vertical-connector">
+                  <div className="v-line"></div>
+                  <div className="v-dot"></div>
+                  <div className="v-horiz"></div>
+                </div>
+              </div>
+              <div className="node-text">
+                <h3>Unlimited<br/>Supplies</h3>
+                <div className="node-sep"></div>
+                <p>Access a vast catalog of<br/>supplies, equipment, and<br/>services for any event scale.</p>
+              </div>
             </div>
-            <div className="bento-stat-sep"></div>
-            <div className="bento-stat-item">
-              <span className="bs-num">10K+</span>
-              <span className="bs-label">Events</span>
+
+            {/* Node 3 */}
+            <div className="wcu-node-item n3">
+              <div className="wcu-circle-container">
+                <div className="circle-glow"></div>
+                <div className="circle-ring r3"></div>
+                <div className="circle-ring r2"></div>
+                <div className="circle-main">
+                  <ShieldCheck size={48} className="node-icon" strokeWidth={1.5} />
+                </div>
+                <div className="vertical-connector">
+                  <div className="v-line"></div>
+                  <div className="v-dot"></div>
+                  <div className="v-horiz"></div>
+                </div>
+              </div>
+              <div className="node-text">
+                <h3>Trusted Quality<br/>Partners</h3>
+                <div className="node-sep"></div>
+                <p>Every vendor is vetted and<br/>reviewed. Quality you can<br/>count on, every single time.</p>
+              </div>
             </div>
-            <div className="bento-stat-sep"></div>
-            <div className="bento-stat-item">
-              <span className="bs-num">98%</span>
-              <span className="bs-label">Satisfaction</span>
+
+            {/* Node 4 */}
+            <div className="wcu-node-item n4">
+              <div className="wcu-circle-container">
+                <div className="circle-glow"></div>
+                <div className="circle-ring r3"></div>
+                <div className="circle-ring r2"></div>
+                <div className="circle-main">
+                  <Timer size={48} className="node-icon" strokeWidth={1.5} />
+                </div>
+                <div className="vertical-connector">
+                  <div className="v-line"></div>
+                  <div className="v-dot"></div>
+                  <div className="v-horiz"></div>
+                </div>
+              </div>
+              <div className="node-text">
+                <h3>Fast Customer<br/>Service</h3>
+                <div className="node-sep"></div>
+                <p>Dedicated support to help<br/>you plan seamlessly from<br/>start to finish.</p>
+              </div>
             </div>
-          </div>
 
-          {/* Bottom Left */}
-          <div className="bento-card bento-std bento-c">
-            <span className="bento-number">03</span>
-            <div className="bento-std-icon"><ShieldCheck size={22} /></div>
-            <h4>Trusted Quality</h4>
-            <p>Every vendor is vetted, reviewed, and rated by real planners. Quality you can count on.</p>
           </div>
-
-          {/* Bottom Right */}
-          <div className="bento-card bento-std bento-d">
-            <span className="bento-number">04</span>
-            <div className="bento-std-icon"><Headphones size={22} /></div>
-            <h4>Dedicated Support</h4>
-            <p>Real humans, not bots. Our team helps you plan seamlessly from start to finish.</p>
-          </div>
-
         </div>
-
       </div>
     </section>
   )
