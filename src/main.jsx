@@ -105,7 +105,6 @@ function ResponsiveHero() {
       <div className="hero-container">
         <section className="hero-copy">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55 }}>
-            <div className="eyebrow"><Sparkles /> YOUR EVENT, OUR PASSION</div>
             <h1>Plan Seamlessly.<br />Celebrate Beautifully.<br /><em>All in One Place.</em></h1>
             <p>Eventit connects you with trusted professionals, top rentals, amazing entertainers, delicious food and expert organizers to create <b>unforgettable events.</b></p>
             <div className="ctas"><CTA>Plan Your Event</CTA><CTA secondary>Explore Marketplace</CTA></div>
@@ -335,17 +334,17 @@ function ExploreServices() {
 function HowItWorks() {
   const steps = [
     {
-      icon: <Building2 size={28} />,
+      icon: <Building2 size={22} />,
       title: "Find the perfect venue for free",
       desc: "Browse our curated list of premium venues tailored to your specific event needs, absolutely free."
     },
     {
-      icon: <Users size={28} />,
+      icon: <Users size={22} />,
       title: "Connect with the best vendor",
       desc: "Get instantly matched with top-tier caterers, decorators, and artists who fit your vision."
     },
     {
-      icon: <Sparkles size={28} />,
+      icon: <Sparkles size={22} />,
       title: "Let us help you with the event",
       desc: "Relax and let our platform streamline your entire planning process from start to finish."
     }
@@ -355,14 +354,22 @@ function HowItWorks() {
     <section className="how-it-works-section">
       <div className="how-it-works-content">
         <h2 className="hiw-title">How it Works</h2>
-        <p className="hiw-subtitle">It’s simple. You have an event to plan and we have the solutions.</p>
+        <p className="hiw-subtitle">It's simple. You have an event to plan and we have the solutions.</p>
 
-        <div className="steps-container">
+        <div className="timeline-container">
+          {/* Central vertical line */}
+          <div className="timeline-line"></div>
+
           {steps.map((step, i) => (
-            <div className="step-card" key={i}>
-              <div className="step-icon">{step.icon}</div>
-              <h3>{step.title}</h3>
-              <p>{step.desc}</p>
+            <div className={`timeline-step ${i % 2 === 0 ? 'step-left' : 'step-right'}`} key={i}>
+              <div className="timeline-content-block">
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+              <div className="timeline-node">
+                <span className="node-number">0{i + 1}</span>
+              </div>
+              <div className="timeline-spacer"></div>
             </div>
           ))}
         </div>
@@ -424,12 +431,11 @@ function TrendingCollections() {
           <div className="trend-number top-center">02</div>
           <div className="trend-img-wrapper arch-cutout">
             <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?q=80&w=800&auto=format&fit=crop" alt="Christmas" />
-            <div className="image-overlay-gradient"></div>
-            <div className="trend-text-overlay bottom-overlay">
-              <h3 className="overlay-title">CHRISTMAS</h3>
-              <p>Celebrate the season with joy & warmth.</p>
-              <a href="#" className="explore-link white-link">EXPLORE <ArrowRight size={14} /></a>
-            </div>
+          </div>
+          <div className="trend-content-below align-center">
+            <h3 className="clean-title">Christmas</h3>
+            <p>Celebrate the season with joy & warmth.</p>
+            <a href="#" className="explore-link">EXPLORE <ArrowRight size={14} /></a>
           </div>
         </div>
 
