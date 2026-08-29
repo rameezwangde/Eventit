@@ -12,20 +12,21 @@ const navItems = ['Explore', 'Vendors', 'Events', 'Packages', 'Inspiration']
 
 import logoUrl from '../Eventit 1.png'
 
-function Logo({ desktop = false }) {
+function Logo({ desktop = false, footer = false }) {
   return (
     <img
       src={logoUrl}
       alt="Eventit"
-      className={desktop ? 'desktop-brand' : 'brand'}
-      style={{ height: '1em', filter: 'brightness(0) saturate(100%) invert(18%) sepia(91%) saturate(3015%) hue-rotate(264deg) brightness(85%) contrast(100%)' }}
+      className={footer ? 'footer-brand' : (desktop ? 'desktop-brand' : 'brand')}
+      style={{ height: footer ? '40px' : '32px', objectFit: 'contain' }}
     />
   )
 }
 
 function Header() {
   return (
-    <header className="header">
+    <div className="header-wrapper">
+      <header className="header">
       <a href="#top" className="brand-link"><Logo desktop /></a>
       <nav className="desktop-nav">
         {navItems.map((item) => (
@@ -49,7 +50,8 @@ function Header() {
         </div>
         <button className="menu icon-btn" aria-label="Open menu"><Menu /></button>
       </div>
-    </header>
+      </header>
+    </div>
   )
 }
 
@@ -760,7 +762,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-brand-col">
-          <a href="/" className="footer-logo">Eventit</a>
+          <a href="/" className="footer-logo"><Logo footer /></a>
           <p className="footer-tagline">Events Simplified</p>
           <div className="social-links">
             <a href="#">in</a>

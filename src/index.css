@@ -78,6 +78,10 @@ a {
 }
 
 /* Header */
+.header-wrapper {
+  background-color: #7025bd;
+  width: 100%;
+}
 .header {
   height: 76px;
   padding: 0 22px;
@@ -122,14 +126,14 @@ a {
   background: none;
   padding: 8px;
   border-radius: 50%;
-  color: #18152d;
+  color: white;
   position: relative;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .icon-btn:hover {
-  background: rgba(112, 37, 189, 0.08);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .icon-btn svg {
@@ -539,7 +543,7 @@ h1 em::after {
   }
 
   .nav-item>a {
-    color: #15172b;
+    color: white;
     font-weight: 500;
     font-size: 15px;
     text-decoration: none;
@@ -558,7 +562,23 @@ h1 em::after {
 
   .btn-signin {
     padding: 10px 20px;
-    border: 1.5px solid #d4c1f5;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    color: white;
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-signin:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-list {
+    padding: 10px 20px;
+    border: 1.5px solid white;
     border-radius: 999px;
     color: #7025bd;
     background: white;
@@ -568,25 +588,9 @@ h1 em::after {
     transition: all 0.2s;
   }
 
-  .btn-signin:hover {
-    background: #f4ebff;
-  }
-
-  .btn-list {
-    padding: 10px 20px;
-    border: 1.5px solid #7025bd;
-    border-radius: 999px;
-    color: white;
-    background: #7025bd;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
   .btn-list:hover {
-    background: #5715a8;
-    border-color: #5715a8;
+    background: #f4ebff;
+    border-color: #f4ebff;
   }
 
   .hero-container {
@@ -2167,13 +2171,6 @@ h1 em::after {
 }
 
 .footer-logo {
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  text-decoration: none;
-  background: linear-gradient(90deg, #c16bf0, #7025bd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   display: block;
   margin-bottom: 8px;
 }
