@@ -516,31 +516,75 @@ function TrendingCollections() {
 }
 
 function WhyChooseUs() {
-  const reasons = [
-    { icon: <Tag size={32} />, title: "Best Price Guarantee" },
-    { icon: <Package size={32} />, title: "Unlimited Supplies" },
-    { icon: <ShieldCheck size={32} />, title: "Trusted Quality Partners" },
-    { icon: <Headphones size={32} />, title: "Fast Customer Service" }
-  ];
-
   return (
-    <section className="why-choose-us">
-      <div className="wcu-container">
-        <h2 className="wcu-title">WHY CHOOSE US</h2>
-        <p className="wcu-desc">
-          <span>Eventit</span> is the only centralized platform that provides event planners with everything they need to organize their events. Eventit makes it <strong>easy, fast, convenient and cost effective</strong> to organize any kind of event.
-        </p>
-
-        <div className="reasons-grid">
-          {reasons.map((reason, i) => (
-            <div className="reason-card" key={i}>
-              <div className="reason-icon-wrapper">
-                {reason.icon}
-              </div>
-              <h4 className="reason-title">{reason.title}</h4>
-            </div>
-          ))}
+    <section className="wcu-editorial">
+      <div className="wcu-inner">
+        
+        <div className="wcu-top-bar">
+          <span className="wcu-eyebrow">— WHY EVENTIT —</span>
+          <h2 className="wcu-heading">The <span>Unfair Advantage</span><br/>for Event Planners</h2>
         </div>
+
+        <div className="wcu-bento">
+          
+          {/* Hero Card — spans 2 rows */}
+          <div className="bento-card bento-hero">
+            <div className="bento-hero-inner">
+
+              <Tag size={28} className="bento-hero-icon" />
+              <h3>Best Price<br/>Guarantee</h3>
+              <p>Transparent pricing. No hidden fees. We negotiate directly with vendors so you always get the best possible rate — guaranteed.</p>
+              <div className="bento-hero-stat">
+                <span className="hero-stat-num">30%</span>
+                <span className="hero-stat-label">avg. savings vs<br/>booking directly</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Top Right */}
+          <div className="bento-card bento-std bento-b">
+
+            <div className="bento-std-icon"><Package size={22} /></div>
+            <h4>Unlimited Supplies</h4>
+            <p>Access a vast catalog of supplies, equipment & services — no matter the scale of your event.</p>
+          </div>
+
+          {/* Stats strip */}
+          <div className="bento-card bento-stats">
+            <div className="bento-stat-item">
+              <span className="bs-num">500+</span>
+              <span className="bs-label">Vendors</span>
+            </div>
+            <div className="bento-stat-sep"></div>
+            <div className="bento-stat-item">
+              <span className="bs-num">10K+</span>
+              <span className="bs-label">Events</span>
+            </div>
+            <div className="bento-stat-sep"></div>
+            <div className="bento-stat-item">
+              <span className="bs-num">98%</span>
+              <span className="bs-label">Satisfaction</span>
+            </div>
+          </div>
+
+          {/* Bottom Left */}
+          <div className="bento-card bento-std bento-c">
+            <span className="bento-number">03</span>
+            <div className="bento-std-icon"><ShieldCheck size={22} /></div>
+            <h4>Trusted Quality</h4>
+            <p>Every vendor is vetted, reviewed, and rated by real planners. Quality you can count on.</p>
+          </div>
+
+          {/* Bottom Right */}
+          <div className="bento-card bento-std bento-d">
+            <span className="bento-number">04</span>
+            <div className="bento-std-icon"><Headphones size={22} /></div>
+            <h4>Dedicated Support</h4>
+            <p>Real humans, not bots. Our team helps you plan seamlessly from start to finish.</p>
+          </div>
+
+        </div>
+
       </div>
     </section>
   )
