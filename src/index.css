@@ -292,6 +292,33 @@ h1 em::after {
   background: #7025bd;
 }
 
+/* Home Hero Section */
+.hero-container {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-copy {
+  padding: 16px 24px 14px;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-copy p {
+  max-width: 570px;
+  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #292b3d;
+}
+
+.hero-copy p b {
+  color: #7025bd;
+}
+
 .hero-visual {
   height: 450px;
   margin: 2px -1px -80px;
@@ -301,6 +328,982 @@ h1 em::after {
   background-position: right top;
   filter: saturate(1.03);
   clip-path: inset(0 0 150px 0);
+}
+
+/* Clean Artists Hero Section */
+.clean-artists-hero {
+  position: relative;
+  width: 100%;
+  min-height: 540px;
+  padding: 80px 24px 100px;
+  background-image: linear-gradient(180deg, rgba(24, 10, 50, 0.5) 0%, rgba(18, 5, 38, 0.78) 55%, rgba(12, 2, 28, 0.95) 100%), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1600&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center 30%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.clean-hero-content {
+  position: relative;
+  z-index: 4;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.clean-hero-title {
+  font-size: clamp(38px, 5.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  color: #ffffff;
+  margin: 0 0 18px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.clean-hero-subtitle {
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 700px;
+  margin: 0 auto 36px;
+  font-weight: 400;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-hafla-ai-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 32px 10px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7025bd 0%, #9333ea 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 35px rgba(112, 37, 189, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-hafla-ai-clean:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(112, 37, 189, 0.55);
+}
+
+.whatsapp-badge-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #25D366;
+  display: grid;
+  place-items: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating WhatsApp Quick Action */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.floating-whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 14px 35px rgba(37, 211, 102, 0.6);
+}
+
+.hero-wave-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 5;
+}
+
+.hero-wave-divider svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* Our Brand Partners Section */
+.brand-partners-section {
+  position: relative;
+  background: #ffffff;
+  padding: 28px 24px 36px;
+  text-align: center;
+  z-index: 6;
+}
+
+.brand-partners-title {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 800;
+  color: #7025bd;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+}
+
+.brand-partners-container {
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.brand-partners-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px 40px;
+}
+
+.brand-partner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  min-width: 130px;
+}
+
+.brand-partner-card:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.brand-logo-icon {
+  margin-bottom: 6px;
+}
+
+.brand-name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: #262626;
+  text-transform: uppercase;
+}
+
+.brand-name.serif {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.brand-name.bold-lh {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.brand-sub {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #737373;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+/* Event Entertainment for Every Occasion Section */
+.entertainment-occasions-section {
+  background: #ffffff;
+  padding: 24px 24px 36px;
+}
+
+.occasions-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.occasions-title {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 800;
+  color: #7025bd;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.occasions-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.line-primary {
+  width: 44px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #7025bd, #a855f7);
+}
+
+.line-secondary {
+  width: 12px;
+  height: 4px;
+  border-radius: 2px;
+  background: #a855f7;
+}
+
+.occasions-container {
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.occasions-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.occasion-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 10px 10px 18px;
+  box-shadow: 0 8px 24px rgba(112, 37, 189, 0.06);
+  border: 1px solid rgba(112, 37, 189, 0.08);
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.occasion-card:hover {
+  box-shadow: 0 16px 36px rgba(112, 37, 189, 0.16);
+}
+
+.occasion-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.occasion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.occasion-card:hover .occasion-img {
+  transform: scale(1.06);
+}
+
+.occasion-card-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1f1b2d;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Ramadan Performances Section */
+.ramadan-section-wrapper {
+  position: relative;
+  background: #ffffff;
+  padding: 24px 24px 44px;
+}
+
+.ramadan-banner-card {
+  position: relative;
+  max-width: 1380px;
+  margin: 0 auto;
+  border-radius: 24px;
+  padding: 44px 24px 110px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #3d0773 0%, #6319aa 55%, #8b2ecf 100%);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(99, 25, 170, 0.3);
+}
+
+.ramadan-star-accent.left {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ramadan-title {
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ramadan-subtitle {
+  font-size: clamp(14.5px, 1.5vw, 17.5px);
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 700px;
+  margin: 0 auto 20px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.ramadan-line-accent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.r-line-1 {
+  width: 44px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.r-line-2 {
+  width: 12px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.ramadan-cards-container {
+  max-width: 1180px;
+  margin: -80px auto 0;
+  position: relative;
+  z-index: 5;
+  padding: 0 16px;
+}
+
+.ramadan-cards-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ramadan-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 16px 16px 24px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(112, 37, 189, 0.08);
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.ramadan-card:hover {
+  box-shadow: 0 18px 48px rgba(112, 37, 189, 0.18);
+}
+
+.ramadan-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.ramadan-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ramadan-card:hover .ramadan-card-img {
+  transform: scale(1.05);
+}
+
+.ramadan-card-title {
+  font-size: clamp(19px, 2vw, 22px);
+  font-weight: 800;
+  color: #7025bd;
+  margin-bottom: 8px;
+}
+
+.ramadan-card-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #4b5563;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* Why Choose Eventit Section */
+.why-choose-section {
+  background: #ffffff;
+  padding: 30px 24px 44px;
+  text-align: center;
+}
+
+.why-header {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.why-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 800;
+  color: #7025bd;
+  letter-spacing: -0.5px;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.why-subtitle {
+  font-size: clamp(14px, 1.4vw, 16px);
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto 18px;
+  line-height: 1.55;
+}
+
+.why-container {
+  max-width: 1380px;
+  margin: 24px auto 0;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.why-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 14px 22px;
+  box-shadow: 0 10px 30px rgba(112, 37, 189, 0.07);
+  border: 1px solid rgba(112, 37, 189, 0.08);
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.why-card:hover {
+  box-shadow: 0 16px 40px rgba(112, 37, 189, 0.16);
+}
+
+.why-icon-circle {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  color: #7025bd;
+  margin-bottom: 18px;
+}
+
+.why-icon-circle svg {
+  color: #7025bd;
+}
+
+.sparkle-dot {
+  position: absolute;
+  color: #c084fc;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.sparkle-dot.s1 {
+  top: -4px;
+  right: -6px;
+  font-size: 15px;
+}
+
+.sparkle-dot.s2 {
+  bottom: -4px;
+  left: -8px;
+  font-size: 11px;
+}
+
+.sparkle-dot.s3 {
+  top: 10px;
+  left: -12px;
+  font-size: 10px;
+}
+
+.why-card-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #7025bd;
+  margin: 0;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 1024px) {
+  .why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ramadan-cards-row {
+    grid-template-columns: 1fr;
+  }
+  .ramadan-banner-card {
+    padding-bottom: 100px;
+  }
+  .ramadan-cards-container {
+    margin-top: -65px;
+  }
+}
+
+/* FAQ Section */
+.faq-section-wrapper {
+  background: #ffffff;
+  padding: 30px 24px 60px;
+  text-align: center;
+}
+
+.faq-title {
+  font-size: clamp(26px, 3.6vw, 38px);
+  font-weight: 800;
+  color: #7025bd;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+}
+
+.faq-container {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #f3e8f8;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-card.active {
+  border-color: rgba(112, 37, 189, 0.4);
+  box-shadow: 0 10px 28px rgba(112, 37, 189, 0.08);
+}
+
+.faq-question-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border: 0;
+  background: transparent;
+  color: #111827;
+  font-size: 15.5px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-icon-indicator {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6b7280;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.faq-card.active .faq-icon-indicator {
+  color: #7025bd;
+}
+
+.faq-answer-content {
+  padding: 0 22px 20px;
+}
+
+.faq-answer-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 10px 0 0;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 12px;
+}
+
+/* Concert Stage Hero Section */
+.concert-hero-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  padding: 40px 32px 80px;
+  background-image: linear-gradient(135deg, rgba(14, 2, 28, 0.92) 0%, rgba(28, 6, 56, 0.85) 50%, rgba(10, 0, 20, 0.96) 100%), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1600&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center top;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.concert-ambient-light.l1 {
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.concert-ambient-light.l2 {
+  position: absolute;
+  bottom: -100px;
+  right: -50px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.28) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.concert-hero-container {
+  position: relative;
+  z-index: 4;
+  max-width: 1380px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.concert-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.live-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  color: #e9d5ff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 22px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+  animation: livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.concert-title {
+  font-size: clamp(38px, 4.8vw, 58px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.concert-title .highlight-text {
+  background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.concert-subtitle {
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin-bottom: 34px;
+}
+
+.concert-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.concert-hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.star-gold { color: #f59e0b; }
+.shield-purple { color: #c084fc; }
+.zap-cyan { color: #38bdf8; }
+
+.trust-dot {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Right Column Showcase Cards */
+.concert-hero-right {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.showcase-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.artist-showcase-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.artist-showcase-card.card-1 {
+  transform: rotate(-1deg);
+}
+
+.artist-showcase-card.card-2 {
+  transform: translateX(16px) rotate(1deg);
+}
+
+.artist-showcase-card.card-3 {
+  transform: translateX(4px) rotate(-0.5deg);
+}
+
+.artist-card-thumb {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.artist-card-tag {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  color: #f3e8ff;
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.artist-play-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.85);
+  border: 0;
+  color: white;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s;
+}
+
+.artist-play-btn:hover {
+  transform: scale(1.1);
+}
+
+.equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+}
+
+.equalizer-bars span {
+  width: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+.equalizer-bars .b1 { height: 60%; animation: eq 0.6s infinite alternate; }
+.equalizer-bars .b2 { height: 100%; animation: eq 0.4s infinite alternate; }
+.equalizer-bars .b3 { height: 40%; animation: eq 0.8s infinite alternate; }
+
+@keyframes eq {
+  0% { height: 20%; }
+  100% { height: 100%; }
+}
+
+.artist-card-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.artist-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.artist-card-top h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fef08a;
+}
+
+.artist-category {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 6px;
+}
+
+.artist-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.artist-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e9d5ff;
+}
+
+.artist-book-sm {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.artist-book-sm:hover {
+  background: #a855f7;
+  border-color: #a855f7;
+}
+
+@media (max-width: 1024px) {
+  .concert-hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .concert-hero-left {
+    align-items: center;
+    text-align: center;
+  }
+  .concert-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .artist-showcase-card.card-2 {
+    transform: none;
+  }
 }
 
 /* Search Bar */
@@ -3663,4 +4666,172 @@ h1 em::after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
+}
+
+/* Artists Page Directory Section */
+.artists-directory-wrapper {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 60px 24px 90px;
+}
+
+.artists-directory-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.artists-directory-header h2 {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 800;
+  color: #1f1b2d;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.artists-directory-header p {
+  font-size: 16px;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto 28px;
+}
+
+.artists-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.artist-cat-pill {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.artist-cat-pill:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.artist-cat-pill.active {
+  background: #7025bd;
+  border-color: #7025bd;
+  color: white;
+  box-shadow: 0 4px 14px rgba(112, 37, 189, 0.3);
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 28px;
+}
+
+.artist-directory-card {
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #e5e0ea;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artist-directory-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(112, 37, 189, 0.12);
+}
+
+.artist-dir-img {
+  position: relative;
+  height: 210px;
+  background-size: cover;
+  background-position: center;
+}
+
+.artist-dir-location {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.artist-dir-body {
+  padding: 20px;
+}
+
+.artist-dir-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.artist-dir-top h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1f1b2d;
+  margin: 0;
+}
+
+.artist-dir-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #d97706;
+}
+
+.artist-dir-sub {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 18px;
+}
+
+.artist-dir-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.artist-dir-price {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.artist-dir-price strong {
+  color: #7025bd;
+  font-size: 15px;
+}
+
+.btn-artist-book {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #7025bd;
+  border: 0;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-artist-book:hover {
+  background: #5715a8;
 }

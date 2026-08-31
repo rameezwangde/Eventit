@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import { motion } from 'framer-motion'
 import {
-  ArrowRight, Building2, CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Headphones, Heart,
+  ArrowRight, Building2, CalendarDays, ChevronLeft, ChevronRight, Headphones, Heart,
   LockKeyhole, MapPin, Menu, Search, ShieldCheck, ShoppingCart, Sparkles, Users, Zap, Tag, Package, Navigation,
-  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star, Timer
+  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star, Timer, Mic
 } from 'lucide-react'
 import './index.css'
 
-const navItems = ['Explore', 'Vendors', 'Events', 'Packages', 'Inspiration']
+const navItems = ['Explore', 'Vendors', 'Artists', 'Events', 'Packages', 'Inspiration']
 
 import logoUrl from '../Eventit 1.png'
 
@@ -23,22 +23,32 @@ function Logo({ desktop = false, footer = false }) {
   )
 }
 
-function Header() {
+function Header({ activeTab, onSelectTab }) {
   return (
     <div className="header-wrapper">
       <header className="header">
-      <a href="#top" className="brand-link"><Logo desktop /></a>
+      <a href="#top" className="brand-link" onClick={(e) => { e.preventDefault(); onSelectTab && onSelectTab('home') }}>
+        <Logo desktop />
+      </a>
       <nav className="desktop-nav">
-        {navItems.map((item) => (
-          <div key={item} className="nav-item">
-            <a href={`#${item.toLowerCase()}`}>{item} <ChevronDown size={14} /></a>
-            <div className="dropdown-menu">
-              <a href="#" className="dropdown-item">All {item}</a>
-              <a href="#" className="dropdown-item">Top Rated</a>
-              <a href="#" className="dropdown-item">New Additions</a>
+        {navItems.map((item) => {
+          const itemKey = item.toLowerCase()
+          const isActive = activeTab === itemKey || (activeTab === 'home' && itemKey === 'explore')
+          return (
+            <div key={item} className="nav-item">
+              <a 
+                href={`#${itemKey}`} 
+                className={isActive ? 'nav-active' : ''}
+                onClick={(e) => {
+                  e.preventDefault()
+                  if (onSelectTab) onSelectTab(itemKey)
+                }}
+              >
+                {item}
+              </a>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </nav>
       <div className="header-actions">
         <button aria-label="Search" className="icon-btn"><Search /></button>
@@ -83,11 +93,11 @@ function SearchBar() {
 }
 
 function Benefits() {
-  const items = [
-    [ShieldCheck, 'Trusted Professionals', 'Verified & Reviewed Vendors'],
-    [LockKeyhole, 'Secure Payments', '100% Safe & Secure'],
-    [Zap, 'Easy Booking', 'Quick & Hassle Free'],
-    [Headphones, '24/7 Support', "We're Here to Help"]
+  const list = [
+    ['Direct Booking with Performers', 'Skip middleman fees & connect with artists instantly'],
+    ['Verified & Vetted Artists', 'Ratings, reviews & verified portfolio for peace of mind'],
+    ['Tailored to Your Budget', 'Flexible packages & transparent pricing with no surprises'],
+    ['Instant Availability Check', 'Check real-time artist schedules & lock in dates fast']
   ]
   return (
     <div className="benefits">
@@ -100,20 +110,1004 @@ function Benefits() {
   )
 }
 
-function ResponsiveHero() {
+const artistCategories = [
+  { id: 'all', label: 'All Artists', icon: Music, headline: 'Event Entertainers & Artists', highlight: 'In UAE' },
+  { id: 'bands', label: 'Live Bands', icon: Speaker, headline: 'Premier Live Bands & Musicians', highlight: 'In UAE' },
+  { id: 'djs', label: 'DJs & Producers', icon: Headphones, headline: 'World-Class DJs & Producers', highlight: 'In UAE' },
+  { id: 'singers', label: 'Solo Vocalists', icon: Sparkles, headline: 'Acoustic & Solo Vocalists', highlight: 'In UAE' },
+  { id: 'performers', label: 'Acrobats & Shows', icon: PartyPopper, headline: 'Spectacular Stage Performers', highlight: 'In UAE' },
+  { id: 'cultural', label: 'Cultural Acts', icon: Gem, headline: 'Heritage & Traditional Artists', highlight: 'In UAE' },
+]
+
+const featuredArtistsPreview = [
+  {
+    name: 'The Dubai Velvet Duo',
+    category: 'Live Jazz & Acoustic Band',
+    rating: '4.9',
+    reviews: 142,
+    tag: 'Trending in Dubai',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop',
+    price: 'From AED 3,500'
+  },
+  {
+    name: 'DJ Alex Ray',
+    category: 'Corporate & Nightlife DJ',
+    rating: '5.0',
+    reviews: 98,
+    tag: 'Available This Weekend',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop',
+    price: 'From AED 2,800'
+  },
+  {
+    name: 'Aura LED & Fire Show',
+    category: 'Spectacular Stage Act',
+    rating: '4.8',
+    reviews: 76,
+    tag: 'Top Rated',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop',
+    price: 'From AED 4,200'
+  }
+]
+
+function WhatsAppIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.419h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c0-5.445 4.43-9.874 9.877-9.874 2.636 0 5.115 1.028 6.979 2.894 1.862 1.865 2.888 4.344 2.887 6.982 0 5.446-4.431 9.877-9.877 9.876m0-18.177c-6.18 0-11.208 5.028-11.208 11.208 0 2.133.597 4.213 1.733 6.015L.5 24l7.021-1.841a11.162 11.162 0 005.523 1.455h.005c6.18 0 11.208-5.028 11.208-11.208 0-2.99-1.164-5.803-3.28-7.919A11.127 11.127 0 0012.051 3.63" fill="currentColor" />
+    </svg>
+  )
+}
+
+function HomeHero() {
+  return (
+    <div className="hero-container">
+      <section className="hero-copy">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55 }}>
+          <h1>Plan Seamlessly.<br />Celebrate Beautifully.<br /><em>All in One Place.</em></h1>
+          <p>Eventit connects you with trusted professionals, top rentals, amazing entertainers, delicious food and expert organizers to create <b>unforgettable events.</b></p>
+          <div className="ctas"><CTA>Plan Your Event</CTA><CTA secondary>Explore Marketplace</CTA></div>
+        </motion.div>
+      </section>
+      <motion.div className="hero-visual" initial={{ opacity: 0, scale: .97 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .1, duration: .7 }} role="img" aria-label="Event planner holding a tablet and coffee, surrounded by event inspiration" />
+    </div>
+  )
+}
+
+function ArtistsHero() {
+  return (
+    <div className="clean-artists-hero">
+      <div className="clean-hero-overlay"></div>
+      <div className="clean-hero-content">
+        <motion.h1 
+          className="clean-hero-title"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Event Entertainers & Artists In UAE
+        </motion.h1>
+
+        <motion.p 
+          className="clean-hero-subtitle"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.5 }}
+        >
+          From artists to on-ground services, everything your event needs—handled seamlessly.
+        </motion.p>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.25, duration: 0.4 }}
+        >
+          <button className="btn-hafla-ai-clean">
+            <span className="whatsapp-badge-icon"><WhatsAppIcon /></span>
+            <span>Plan with Eventit AI</span>
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Smooth Wavy Bottom Divider */}
+      <div className="hero-wave-divider">
+        <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,45 C320,95 640,5 960,65 C1200,100 1360,45 1440,30 L1440,90 L0,90 Z" fill="#ffffff" />
+        </svg>
+      </div>
+
+      {/* Floating WhatsApp Quick-Action Button */}
+      <a href="#whatsapp" className="floating-whatsapp-btn" aria-label="Chat on WhatsApp">
+        <WhatsAppIcon />
+      </a>
+    </div>
+  )
+}
+
+function BrandPartnersSection() {
+  const brands = [
+    {
+      name: 'MANDARIN ORIENTAL',
+      sub: 'JUMEIRA DUBAI',
+      icon: (
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#b38e46">
+          <path d="M12 2L15 8L21 9L16.5 13.5L18 19.5L12 16L6 19.5L7.5 13.5L3 9L9 8L12 2Z" fillOpacity="0.85"/>
+        </svg>
+      )
+    },
+    {
+      name: 'One&Only',
+      sub: 'ROYAL MIRAGE',
+      serif: true
+    },
+    {
+      name: 'FOUR SEASONS',
+      sub: 'HOTELS AND RESORTS',
+      icon: (
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#333">
+          <path d="M12 3L4 18H20L12 3Z"/>
+        </svg>
+      )
+    },
+    {
+      name: 'IHG',
+      sub: 'HOTELS & RESORTS',
+      bold: true
+    },
+    {
+      name: 'Hilton',
+      sub: 'HOTELS & RESORTS',
+      serif: true,
+      icon: (
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#002b49">
+          <path d="M6 4H9V10H15V4H18V20H15V13H9V20H6V4Z"/>
+        </svg>
+      )
+    },
+    {
+      name: 'Marriott',
+      sub: 'HOTELS & RESORTS',
+      serif: true,
+      icon: (
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#b91c1c">
+          <path d="M4 6H8L12 14L16 6H20V18H17V10L13 18H11L7 10V18H4V6Z"/>
+        </svg>
+      )
+    },
+    {
+      name: 'MILLENNIUM',
+      sub: 'HOTELS AND RESORTS',
+      icon: (
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#b91c1c">
+          <path d="M4 4H7V20H4V4ZM10 4H14V20H10V4ZM17 4H20V20H17V4Z"/>
+        </svg>
+      )
+    }
+  ]
+
+  return (
+    <section className="brand-partners-section">
+      <h2 className="brand-partners-title">Our Brand Partners</h2>
+      <div className="brand-partners-container">
+        <div className="brand-partners-row">
+          {brands.map((b, i) => (
+            <div className="brand-partner-card" key={i}>
+              {b.icon && <div className="brand-logo-icon">{b.icon}</div>}
+              <span className={`brand-name ${b.serif ? 'serif' : ''} ${b.bold ? 'bold-lh' : ''}`}>{b.name}</span>
+              <span className="brand-sub">{b.sub}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function DancerIcon({ className = "w-5 h-5 text-purple-300" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="4" r="2" />
+      <path d="M12 6v6" />
+      <path d="M6 9l6 2 6-2" />
+      <path d="M8 20l4-8 4 8" />
+    </svg>
+  )
+}
+
+function MaskIcon({ className = "w-5 h-5 text-purple-300" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 6c0 8 4 14 8 14s8-6 8-14H4z" />
+      <circle cx="9" cy="10" r="1.5" fill="currentColor" />
+      <circle cx="15" cy="10" r="1.5" fill="currentColor" />
+      <path d="M9 15c1.5 1.5 4.5 1.5 6 0" />
+    </svg>
+  )
+}
+
+const entertainerOccasionsData = [
+  {
+    number: '01',
+    title: 'Hosts & DJs',
+    description: 'Engaging hosts and dynamic DJs to set the perfect tone.',
+    image: '/hosts_djs.jpg',
+    icon: Mic,
+    rotationClass: 'lg:rotate-[3.5deg]',
+    benefitIcon: Star,
+    benefitTitle: 'Professional',
+    benefitSubtitle: 'Performers',
+    isCenter: false
+  },
+  {
+    number: '02',
+    title: 'Live Music',
+    description: 'From soulful melodies to high-energy bands, live music that connects.',
+    image: '/live_music.jpg',
+    icon: Music,
+    rotationClass: 'lg:-rotate-[2.5deg]',
+    benefitIcon: ShieldCheck,
+    benefitTitle: 'Trusted &',
+    benefitSubtitle: 'Reliable',
+    isCenter: false
+  },
+  {
+    number: '03',
+    title: 'Dance Performances',
+    description: 'Spectacular dance acts that add energy, color and excitement to your event.',
+    image: '/dance_performances.jpg',
+    icon: DancerIcon,
+    rotationClass: 'rotate-0',
+    benefitIcon: Users,
+    benefitTitle: 'Tailored for Every',
+    benefitSubtitle: 'Event',
+    isCenter: true
+  },
+  {
+    number: '04',
+    title: 'Special & Roaming Acts',
+    description: 'Unique acts and roaming performers that surprise and delight your guests.',
+    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop',
+    icon: Gift,
+    rotationClass: 'lg:rotate-[2.5deg]',
+    benefitIcon: Heart,
+    benefitTitle: 'Guests Love,',
+    benefitSubtitle: 'Memories Last',
+    isCenter: false
+  },
+  {
+    number: '05',
+    title: 'Cultural Entertainment',
+    description: 'Celebrate traditions with authentic cultural performances.',
+    image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=800&auto=format&fit=crop',
+    icon: MaskIcon,
+    rotationClass: 'lg:-rotate-[3.5deg]',
+    benefitIcon: Sparkles,
+    benefitTitle: 'Entertainment',
+    benefitSubtitle: 'That Stands Out',
+    isCenter: false
+  }
+]
+
+function ArtistEntertainmentOccasions() {
+  return (
+    <section className="relative w-full overflow-hidden bg-[#070611] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans">
+      {/* Ambient background glows */}
+      <div className="absolute top-10 left-[-100px] w-[450px] h-[450px] bg-purple-900/25 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute top-20 right-[-120px] w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* Decorative Dotted Matrix (Top-Left) */}
+      <div className="absolute top-8 left-8 opacity-25 pointer-events-none hidden sm:block">
+        <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+          {Array.from({ length: 4 }).map((_, r) =>
+            Array.from({ length: 6 }).map((_, c) => (
+              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#A855F7" />
+            ))
+          )}
+        </svg>
+      </div>
+
+      {/* Decorative Circular Arcs (Top-Right) */}
+      <div className="absolute top-0 right-0 opacity-20 pointer-events-none hidden md:block overflow-hidden w-64 h-64">
+        <svg width="300" height="300" viewBox="0 0 300 300" fill="none" className="translate-x-12 -translate-y-12">
+          <circle cx="200" cy="100" r="70" stroke="#A855F7" strokeWidth="1" />
+          <circle cx="200" cy="100" r="120" stroke="#A855F7" strokeWidth="1" strokeDasharray="4 4" />
+          <circle cx="200" cy="100" r="170" stroke="#A855F7" strokeWidth="1" />
+        </svg>
+      </div>
+
+      {/* Floating 3D Purple Orbs */}
+      <motion.div 
+        className="absolute top-16 right-10 lg:right-24 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-400 via-purple-600 to-indigo-950 shadow-[0_10px_30px_rgba(147,51,234,0.6)] blur-[0.5px] pointer-events-none z-10 opacity-80"
+        animate={{ y: [0, -14, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute bottom-10 left-4 lg:left-12 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-fuchsia-500 via-purple-700 to-slate-950 shadow-[0_10px_35px_rgba(168,85,247,0.5)] blur-[0.5px] pointer-events-none z-10 opacity-70"
+        animate={{ y: [0, 16, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Section Heading */}
+      <motion.div 
+        className="text-center max-w-4xl mx-auto mb-14 sm:mb-20 relative z-20"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight leading-[1.15] text-white mb-4 sm:mb-5">
+          Event Entertainment &<br />
+          Performers for <span className="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-300 bg-clip-text text-transparent">Every Occasion</span>
+        </h2>
+        <p className="text-xs sm:text-sm md:text-base text-slate-300/80 max-w-2xl mx-auto leading-relaxed mb-4">
+          From high-energy performances to immersive experiences,<br className="hidden sm:inline" />
+          we bring the perfect entertainment to make your event <span className="text-purple-400 font-semibold">unforgettable.</span>
+        </p>
+        <div className="flex items-center justify-center gap-1.5 mt-4">
+          <span className="w-9 h-1 rounded-full bg-gradient-to-r from-purple-600 to-purple-400"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+        </div>
+      </motion.div>
+
+      {/* Desktop & Tablet Panels Grid */}
+      <div className="hidden md:block relative z-20 max-w-[1380px] mx-auto">
+        <div className="flex justify-center items-end gap-3 lg:gap-4 xl:gap-5 px-2">
+          {entertainerOccasionsData.map((item, idx) => {
+            const IconComponent = item.icon
+            return (
+              <motion.div
+                key={item.title}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-[26px] cursor-pointer transition-all duration-500 ease-out ${item.rotationClass} w-[210px] lg:w-[245px] xl:w-[260px] h-[450px] lg:h-[490px] z-20 bg-gradient-to-b from-[#180e33]/90 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/25 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-purple-400/80 hover:shadow-[0_20px_45px_rgba(147,51,234,0.45)]`}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                whileHover={{ y: -14, rotate: 0 }}
+              >
+                {/* Upper Content */}
+                <div className="p-5 lg:p-6 relative z-20 flex flex-col h-full justify-between">
+                  <div>
+                    {/* Header Row: Icon & Translucent Number */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 bg-purple-950/60 border-purple-400/40 text-purple-300 group-hover:border-purple-300 group-hover:text-white">
+                        <IconComponent className="w-5 h-5" />
+                      </div>
+                      <span className="font-extrabold tracking-tight transition-colors duration-300 text-2xl text-purple-500/50 group-hover:text-purple-300">
+                        {item.number}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-bold text-white mb-2 leading-tight transition-transform duration-300 text-xl">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-xs lg:text-sm text-slate-300/80 font-normal leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Image in lower portion */}
+                  <div className="relative w-full h-[200px] lg:h-[230px] rounded-2xl overflow-hidden mt-4">
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/40 to-transparent pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Bottom Center Node */}
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 transition-all duration-300 z-30 bg-purple-500 border-purple-200 shadow-[0_0_12px_#a855f7] group-hover:bg-fuchsia-400 group-hover:scale-125" />
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Bottom Dotted Connector & Benefit Line */}
+        <motion.div 
+          className="mt-6 relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+        >
+          {/* Subtle horizontal dashed connector line */}
+          <div className="absolute top-[28px] left-[10%] right-[10%] pointer-events-none z-0">
+            <svg className="w-full h-8 text-purple-500/30" viewBox="0 0 1000 30" fill="none" preserveAspectRatio="none">
+              <path d="M 0,10 Q 500,30 1000,10" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 6" />
+            </svg>
+          </div>
+
+          <div className="flex justify-between items-start max-w-[1300px] mx-auto px-4 relative z-10">
+            {entertainerOccasionsData.map((item) => {
+              const BenefitIcon = item.benefitIcon
+              return (
+                <div key={item.number} className="flex flex-col items-center text-center w-[180px] group cursor-pointer">
+                  {/* Vertical Dotted Line */}
+                  <div className="w-0 h-6 border-l-2 border-dotted border-purple-400/50 mb-2 group-hover:border-purple-300 transition-colors" />
+
+                  {/* Icon Circle */}
+                  <div className="w-10 h-10 rounded-full bg-[#180a30] border border-purple-500/40 flex items-center justify-center text-purple-300 shadow-[0_0_15px_rgba(147,51,234,0.25)] mb-2 group-hover:border-purple-300 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <BenefitIcon className="w-5 h-5" />
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-xs font-semibold text-white leading-tight">
+                    {item.benefitTitle}
+                  </div>
+                  <div className="text-[11px] text-slate-400 leading-tight">
+                    {item.benefitSubtitle}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Mobile Swipe Carousel Layout (< 768px) */}
+      <div className="md:hidden relative z-20">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-8 no-scrollbar scroll-smooth">
+          {entertainerOccasionsData.map((item, idx) => {
+            const IconComponent = item.icon
+            return (
+              <motion.div
+                key={item.title}
+                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[24px] bg-gradient-to-b from-[#180e33]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 p-5"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-9 h-9 rounded-full bg-purple-950/60 border border-purple-400/40 flex items-center justify-center text-purple-300">
+                      <IconComponent className="w-4 h-4" />
+                    </div>
+                    <span className="text-2xl font-extrabold text-purple-400/60">{item.number}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-1.5">{item.title}</h3>
+                  <p className="text-xs text-slate-300/80 leading-relaxed mb-4">{item.description}</p>
+                </div>
+                <div className="relative w-full h-[190px] rounded-xl overflow-hidden mt-auto">
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent" />
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Mobile Benefits Grid */}
+        <div className="grid grid-cols-2 gap-4 px-4 mt-6 pt-6 border-t border-purple-900/40">
+          {entertainerOccasionsData.map((item) => {
+            const BenefitIcon = item.benefitIcon
+            return (
+              <div key={item.number} className="flex items-center gap-3 p-2.5 rounded-xl bg-purple-950/30 border border-purple-500/20">
+                <div className="w-8 h-8 rounded-full bg-purple-900/50 flex items-center justify-center text-purple-300 shrink-0">
+                  <BenefitIcon className="w-4 h-4" />
+                </div>
+                <div className="text-xs">
+                  <span className="block font-semibold text-white leading-tight">{item.benefitTitle}</span>
+                  <span className="text-[11px] text-slate-400 leading-tight">{item.benefitSubtitle}</span>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function OudIcon({ className = "w-6 h-6 text-white" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 21c4.4 0 8-3.6 8-8 0-4-3-7.5-6.5-8.8L12 3l-1.5 1.2C7 5.5 4 9 4 13c0 4.4 3.6 8 8 8z" />
+      <circle cx="12" cy="13" r="2.5" />
+      <line x1="12" y1="3" x2="12" y2="10.5" />
+      <line x1="10.5" y1="5" x2="10.5" y2="11" />
+      <line x1="13.5" y1="5" x2="13.5" y2="11" />
+      <line x1="9" y1="18" x2="15" y2="18" />
+    </svg>
+  )
+}
+
+function DallahIcon({ className = "w-6 h-6 text-white" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 20h10l-1-7H8l-1 7z" />
+      <path d="M8 13c0-3 1.8-5 4-5s4 2 4 5" />
+      <path d="M10 8c0-2 1-3.5 2-4.5 1 1 2 2.5 2 4.5" />
+      <circle cx="12" cy="2.5" r="1" />
+      <path d="M7 14C3.5 12 3 8 6 5" />
+      <path d="M17 14c3-1.5 3.5-5.5 1-8" />
+    </svg>
+  )
+}
+
+function IslamicStarOrnament({ className = "w-6 h-6 text-purple-400" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="6" y="6" width="12" height="12" rx="1" transform="rotate(45 12 12)" />
+      <rect x="6" y="6" width="12" height="12" rx="1" />
+      <circle cx="12" cy="12" r="2" fill="currentColor" fillOpacity="0.6" />
+    </svg>
+  )
+}
+
+function RamadanLantern({ className = "w-10 h-24 text-purple-400/70" }) {
+  return (
+    <svg className={className} viewBox="0 0 40 100" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <line x1="20" y1="0" x2="20" y2="25" strokeDasharray="2 2" />
+      <circle cx="20" cy="27" r="2.5" fill="currentColor" />
+      <path d="M12 34 L20 29.5 L28 34 L25 38 L15 38 Z" fill="currentColor" fillOpacity="0.3" />
+      <path d="M14 38 L8 58 L20 70 L32 58 L26 38 Z" fill="currentColor" fillOpacity="0.2" />
+      <line x1="20" y1="38" x2="20" y2="70" />
+      <line x1="14" y1="38" x2="8" y2="58" />
+      <line x1="26" y1="38" x2="32" y2="58" />
+      <circle cx="20" cy="54" r="3" fill="#f0abfc" stroke="none" />
+      <path d="M17 70 L20 75 L23 70" />
+      <line x1="20" y1="75" x2="20" y2="88" />
+      <circle cx="20" cy="89" r="1.5" fill="currentColor" />
+    </svg>
+  )
+}
+
+function IslamicMandalaPattern({ className = "w-40 h-40 text-purple-400/10" }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.8">
+      <circle cx="50" cy="50" r="45" />
+      <circle cx="50" cy="50" r="35" strokeDasharray="2 2" />
+      <circle cx="50" cy="50" r="25" />
+      {Array.from({ length: 8 }).map((_, i) => (
+        <g key={i} transform={`rotate(${i * 45} 50 50)`}>
+          <path d="M50,5 C55,20 55,30 50,35 C45,30 45,20 50,5 Z" fill="currentColor" fillOpacity="0.08" />
+          <line x1="50" y1="5" x2="50" y2="25" />
+        </g>
+      ))}
+    </svg>
+  )
+}
+
+function RamadanPerformancesSection() {
+  return (
+    <section className="relative w-full overflow-hidden bg-[#06040D] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans">
+      {/* Subtle purple radial background glows */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 w-[550px] h-[550px] bg-purple-900/20 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 translate-x-1/2 w-[550px] h-[550px] bg-fuchsia-950/20 rounded-full blur-[140px] pointer-events-none" />
+
+      {/* Islamic Arch Line-Art Framing on Far Left & Right Edges */}
+      <div className="absolute top-12 left-0 pointer-events-none hidden lg:block opacity-20">
+        <svg width="120" height="500" viewBox="0 0 120 500" fill="none" stroke="#A855F7" strokeWidth="1">
+          <path d="M0,0 Q90,120 90,250 Q90,380 0,500" strokeDasharray="4 4" />
+          <path d="M0,40 Q60,140 60,250 Q60,360 0,460" />
+          <circle cx="60" cy="250" r="4" fill="#A855F7" />
+        </svg>
+      </div>
+      <div className="absolute top-12 right-0 pointer-events-none hidden lg:block opacity-20 transform scale-x-[-1]">
+        <svg width="120" height="500" viewBox="0 0 120 500" fill="none" stroke="#A855F7" strokeWidth="1">
+          <path d="M0,0 Q90,120 90,250 Q90,380 0,500" strokeDasharray="4 4" />
+          <path d="M0,40 Q60,140 60,250 Q60,360 0,460" />
+          <circle cx="60" cy="250" r="4" fill="#A855F7" />
+        </svg>
+      </div>
+
+      {/* Floating Hanging Ramadan Lanterns */}
+      {/* Left Lanterns */}
+      <motion.div 
+        className="absolute top-0 left-6 sm:left-12 z-10 pointer-events-none hidden sm:block opacity-85"
+        animate={{ y: [0, -4, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <RamadanLantern className="w-10 h-28 text-purple-400" />
+      </motion.div>
+      <motion.div 
+        className="absolute top-12 left-20 sm:left-32 z-0 pointer-events-none hidden md:block opacity-40 blur-[1px]"
+        animate={{ y: [0, 4, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <RamadanLantern className="w-7 h-20 text-purple-500" />
+      </motion.div>
+
+      {/* Right Lanterns */}
+      <motion.div 
+        className="absolute top-0 right-6 sm:right-12 z-10 pointer-events-none hidden sm:block opacity-85"
+        animate={{ y: [0, -5, 0] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <RamadanLantern className="w-10 h-28 text-purple-400" />
+      </motion.div>
+      <motion.div 
+        className="absolute top-12 right-20 sm:right-32 z-0 pointer-events-none hidden md:block opacity-40 blur-[1px]"
+        animate={{ y: [0, 3, 0] }}
+        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <RamadanLantern className="w-7 h-20 text-purple-500" />
+      </motion.div>
+
+      {/* Section Header Container */}
+      <motion.div 
+        className="text-center max-w-4xl mx-auto mb-14 relative z-20"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        {/* Geometric Islamic Ornament Above Heading */}
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="w-12 sm:w-20 h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-purple-400/80" />
+          <IslamicStarOrnament className="w-5 h-5 text-purple-400" />
+          <span className="w-12 sm:w-20 h-[1px] bg-gradient-to-l from-transparent via-purple-500/50 to-purple-400/80" />
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.18] text-white mb-4 font-serif">
+          Curated Performances for<br />
+          <span className="bg-gradient-to-r from-purple-400 via-purple-300 to-fuchsia-400 bg-clip-text text-transparent">
+            Ramadan Evenings
+          </span>
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-sm sm:text-base md:text-lg text-slate-300/80 max-w-2xl mx-auto leading-relaxed mb-6 font-normal">
+          Thoughtfully selected artists and experiences that honour the spirit,<br className="hidden sm:inline" />
+          culture, and calm of Ramadan.
+        </p>
+
+        {/* Decorative Divider Under Subheading */}
+        <div className="flex items-center justify-center gap-2">
+          <span className="w-8 h-[1px] bg-purple-500/40" />
+          <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
+          <IslamicStarOrnament className="w-4 h-4 text-purple-300" />
+          <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
+          <span className="w-8 h-[1px] bg-purple-500/40" />
+        </div>
+      </motion.div>
+
+      {/* Main Two-Panel Feature Showcase */}
+      <div className="relative z-20 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          
+          {/* LEFT PANEL: Arabic Entertainers */}
+          <motion.div 
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-gradient-to-b from-[#160a2c]/95 via-[#100622]/95 to-[#090317]/98 border border-purple-500/50 shadow-[0_0_30px_rgba(147,51,234,0.2),0_15px_50px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_0_45px_rgba(168,85,247,0.4)] transition-all duration-700 ease-out cursor-pointer"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            whileHover={{ y: -6 }}
+          >
+            {/* Corner Islamic Mandala Texture */}
+            <div className="absolute bottom-0 right-0 pointer-events-none opacity-10 transition-opacity duration-500 group-hover:opacity-20">
+              <IslamicMandalaPattern className="w-56 h-56 text-purple-300" />
+            </div>
+
+            {/* Upper Photography Area */}
+            <div className="relative w-full h-[300px] sm:h-[350px] lg:h-[370px] overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=1600&auto=format&fit=crop" 
+                alt="Arabic Entertainers" 
+                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#120726] via-[#120726]/30 to-transparent pointer-events-none" />
+
+              {/* Floating Oud Icon Circle */}
+              <motion.div 
+                className="absolute top-6 left-6 w-14 h-14 rounded-full bg-purple-950/75 border border-purple-300/50 backdrop-blur-md flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.4)] z-20"
+                whileHover={{ y: -3 }}
+              >
+                <OudIcon className="w-7 h-7 text-purple-200" />
+              </motion.div>
+
+              {/* S-Wave Curved Mask Divider */}
+              <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
+                <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 sm:h-20 text-[#120726] fill-current">
+                  <path d="M0,20 Q 250,85 500,10 L500,80 L0,80 Z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Lower Content Area */}
+            <div className="p-7 sm:p-9 relative z-20 pt-0 flex flex-col justify-between flex-1">
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight font-serif">
+                  Arabic Entertainers
+                </h3>
+                
+                {/* Small Decorative Accent */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-6 h-[1px] bg-purple-400/60" />
+                  <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
+                  <span className="w-6 h-[1px] bg-purple-400/60" />
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-300/85 font-normal leading-relaxed max-w-lg">
+                  Live performances rooted in Arabic culture—from soulful oud melodies to traditional dance forms that elevate the atmosphere.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom Glow Bar Accent */}
+            <div className="w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
+
+          {/* RIGHT PANEL: Arabic Services */}
+          <motion.div 
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-gradient-to-b from-[#160a2c]/95 via-[#100622]/95 to-[#090317]/98 border border-purple-500/50 shadow-[0_0_30px_rgba(147,51,234,0.2),0_15px_50px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_0_45px_rgba(168,85,247,0.4)] transition-all duration-700 ease-out cursor-pointer"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            whileHover={{ y: -6 }}
+          >
+            {/* Corner Islamic Mandala Texture */}
+            <div className="absolute bottom-0 right-0 pointer-events-none opacity-10 transition-opacity duration-500 group-hover:opacity-20">
+              <IslamicMandalaPattern className="w-56 h-56 text-purple-300" />
+            </div>
+
+            {/* Upper Photography Area */}
+            <div className="relative w-full h-[300px] sm:h-[350px] lg:h-[370px] overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1600&auto=format&fit=crop" 
+                alt="Arabic Services" 
+                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#120726] via-[#120726]/30 to-transparent pointer-events-none" />
+
+              {/* Floating Dallah Coffee Pot Icon Circle */}
+              <motion.div 
+                className="absolute top-6 left-6 w-14 h-14 rounded-full bg-purple-950/75 border border-purple-300/50 backdrop-blur-md flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.4)] z-20"
+                whileHover={{ y: -3 }}
+              >
+                <DallahIcon className="w-7 h-7 text-purple-200" />
+              </motion.div>
+
+              {/* Mirrored S-Wave Curved Mask Divider */}
+              <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
+                <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 sm:h-20 text-[#120726] fill-current">
+                  <path d="M0,10 Q 250,85 500,20 L500,80 L0,80 Z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Lower Content Area */}
+            <div className="p-7 sm:p-9 relative z-20 pt-0 flex flex-col justify-between flex-1">
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight font-serif">
+                  Arabic Services
+                </h3>
+                
+                {/* Small Decorative Accent */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-6 h-[1px] bg-purple-400/60" />
+                  <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
+                  <span className="w-6 h-[1px] bg-purple-400/60" />
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-300/85 font-normal leading-relaxed max-w-lg">
+                  Authentic cultural services that bring tradition to life through hospitality, craft, and ceremonial experiences.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom Glow Bar Accent */}
+            <div className="w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
+
+        </div>
+
+        {/* Center Connection Star Detail Between Both Panels */}
+        <div className="hidden lg:flex items-center justify-center absolute left-1/2 bottom-8 -translate-x-1/2 pointer-events-none z-30">
+          <div className="w-9 h-9 rounded-full bg-[#180a30] border border-purple-400/70 flex items-center justify-center shadow-[0_0_20px_#c026d3]">
+            <IslamicStarOrnament className="w-5 h-5 text-fuchsia-300" />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const specialistItems = [
+  {
+    title: 'Event Specialists',
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    title: 'Art & Crafts',
+    image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    title: 'Wellness & Beauty',
+    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    title: 'Photographers & Videographers',
+    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    title: 'Traditional Services',
+    image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=800&auto=format&fit=crop'
+  }
+]
+
+function EventSpecialistsSection() {
+  return (
+    <section className="entertainment-occasions-section specialists-section">
+      <div className="occasions-header">
+        <h2 className="occasions-title">Explore Event Specialists & Professional Staff for Event</h2>
+        <div className="occasions-title-line">
+          <span className="line-primary"></span>
+          <span className="line-secondary"></span>
+        </div>
+      </div>
+      <div className="occasions-container">
+        <div className="occasions-grid">
+          {specialistItems.map((item) => (
+            <motion.div 
+              key={item.title} 
+              className="occasion-card"
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.25 }}
+            >
+              <div className="occasion-img-wrapper">
+                <img src={item.image} alt={item.title} className="occasion-img" />
+              </div>
+              <h3 className="occasion-card-title">{item.title}</h3>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const whyChooseItems = [
+  {
+    title: 'BEST PRICE GUARANTEE',
+    icon: <Tag size={32} className="why-icon" />
+  },
+  {
+    title: 'UNLIMITED SUPPLIES',
+    icon: <Gift size={32} className="why-icon" />
+  },
+  {
+    title: 'TRUSTED QUALITY PARTNERS',
+    icon: <ShieldCheck size={32} className="why-icon" />
+  },
+  {
+    title: 'FAST CUSTOMER SERVICE',
+    icon: <Headphones size={32} className="why-icon" />
+  },
+  {
+    title: 'TIMELY DELIVERY',
+    icon: <Timer size={32} className="why-icon" />
+  }
+]
+
+function WhyChooseEventitSection() {
+  return (
+    <section className="why-choose-section">
+      <div className="why-header">
+        <h2 className="why-title">WHY CHOOSE EVENTIT</h2>
+        <p className="why-subtitle">
+          UAE's largest event services team with 20,000+ events enabled. Whether it's a gala dinner or a wedding ceremony, and whether you need a venue or an artist, Eventit will help you get it with no stress.
+        </p>
+        <div className="occasions-title-line">
+          <span className="line-primary"></span>
+          <span className="line-secondary"></span>
+        </div>
+      </div>
+      <div className="why-container">
+        <div className="why-grid">
+          {whyChooseItems.map((item) => (
+            <motion.div 
+              key={item.title} 
+              className="why-card"
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.25 }}
+            >
+              <div className="why-icon-circle">
+                <span className="sparkle-dot s1">✨</span>
+                <span className="sparkle-dot s2">✦</span>
+                <span className="sparkle-dot s3">★</span>
+                {item.icon}
+              </div>
+              <h3 className="why-card-title">{item.title}</h3>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const faqData = [
+  {
+    question: 'How can I hire event entertainers through Eventit?',
+    answer: 'You can hire event entertainers through Eventit by browsing the available performers on the platform and selecting the one that fits your event. Simply explore entertainers such as DJs, musicians, dancers, or MCs, submit a booking request, and the Eventit team will help confirm the details for your event.'
+  },
+  {
+    question: 'Do entertainers bring their own equipment and setup?',
+    answer: 'Yes! Most entertainers provide their own instruments, sound equipment, wireless mics, and basic performance setups. If your venue requires specialized staging or high-output AV production, our Eventit production team can seamlessly coordinate all technical requirements.'
+  },
+  {
+    question: 'What happens if an entertainer cancels or is unavailable at the last minute?',
+    answer: 'Eventit provides a 100% Artist Replacement Guarantee. In the rare event of an emergency or last-minute cancellation, our team immediately dispatches a verified replacement artist of equal or higher caliber at no additional cost.'
+  },
+  {
+    question: 'Can Eventit help me choose the right entertainment for my event type and audience?',
+    answer: 'Absolutely! Our event entertainment specialists and AI Assistant analyze your event theme, guest demographic, venue size, and budget to curate tailored artist recommendations.'
+  },
+  {
+    question: 'Can I watch sample videos or past performances before booking an entertainer?',
+    answer: 'Yes! Every artist profile on Eventit includes high-definition performance videos, audio clips, song lists, past client reviews, and verified ratings so you can book with complete confidence.'
+  }
+]
+
+function ArtistFAQSection() {
+  const [openIndex, setOpenIndex] = useState(0)
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
+
+  return (
+    <section className="faq-section-wrapper">
+      <h2 className="faq-title">Frequently asked questions</h2>
+      <div className="faq-container">
+        {faqData.map((item, idx) => {
+          const isOpen = openIndex === idx
+          return (
+            <div key={idx} className={`faq-card ${isOpen ? 'active' : ''}`}>
+              <button 
+                className="faq-question-btn" 
+                onClick={() => toggleFAQ(idx)}
+                aria-expanded={isOpen}
+              >
+                <span>{item.question}</span>
+                <span className="faq-icon-indicator">{isOpen ? '✕' : '+'}</span>
+              </button>
+              {isOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.25 }}
+                  className="faq-answer-content"
+                >
+                  <p>{item.answer}</p>
+                </motion.div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function ResponsiveHero({ activeTab, onSelectTab }) {
+  if (activeTab === 'artists') {
+    return (
+      <main className="site-wrapper" id="top">
+        <Header activeTab={activeTab} onSelectTab={onSelectTab} />
+        <ArtistsHero />
+        <BrandPartnersSection />
+        <ArtistEntertainmentOccasions />
+        <RamadanPerformancesSection />
+        <EventSpecialistsSection />
+        <WhyChooseEventitSection />
+        <ArtistFAQSection />
+      </main>
+    )
+  }
+
   return (
     <main className="site-wrapper" id="top">
-      <Header />
-      <div className="hero-container">
-        <section className="hero-copy">
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55 }}>
-            <h1>Plan Seamlessly.<br />Celebrate Beautifully.<br /><em>All in One Place.</em></h1>
-            <p>Eventit connects you with trusted professionals, top rentals, amazing entertainers, delicious food and expert organizers to create <b>unforgettable events.</b></p>
-            <div className="ctas"><CTA>Plan Your Event</CTA><CTA secondary>Explore Marketplace</CTA></div>
-          </motion.div>
-        </section>
-        <motion.div className="hero-visual" initial={{ opacity: 0, scale: .97 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .1, duration: .7 }} role="img" aria-label="Event planner holding a tablet and coffee, surrounded by event inspiration" />
-      </div>
+      <Header activeTab={activeTab} onSelectTab={onSelectTab} />
+      <HomeHero />
       <SearchBar />
       <Benefits />
     </main>
@@ -843,19 +1837,122 @@ function MainContentWrapper({ children }) {
   )
 }
 
+const featuredArtistsData = [
+  {
+    id: 1,
+    name: 'The Dubai Velvet Duo',
+    category: 'Live Bands & Musicians',
+    genre: 'Jazz & Pop Acoustic',
+    rating: '4.9',
+    reviews: 142,
+    location: 'Dubai, UAE',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop',
+    price: 'AED 3,500'
+  },
+  {
+    id: 2,
+    name: 'DJ Alex Ray',
+    category: 'DJs & Producers',
+    genre: 'Deep House & Commercial',
+    rating: '5.0',
+    reviews: 98,
+    location: 'Dubai & Abu Dhabi',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop',
+    price: 'AED 2,800'
+  },
+  {
+    id: 3,
+    name: 'Aura Fire & LED Spectacle',
+    category: 'Stage & Show Acts',
+    genre: 'Visual & Fire Performance',
+    rating: '4.8',
+    reviews: 76,
+    location: 'All UAE',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop',
+    price: 'AED 4,200'
+  },
+  {
+    id: 4,
+    name: 'Samir Oud & Arabic Ensemble',
+    category: 'Cultural Acts',
+    genre: 'Traditional & Heritage Fusion',
+    rating: '4.95',
+    reviews: 110,
+    location: 'Dubai, UAE',
+    image: 'https://images.unsplash.com/photo-1525994886773-080587e161c2?q=80&w=600&auto=format&fit=crop',
+    price: 'AED 3,000'
+  }
+]
+
+function ArtistsPageContent() {
+  const [filter, setFilter] = useState('All')
+  const categories = ['All', 'Live Bands & Musicians', 'DJs & Producers', 'Stage & Show Acts', 'Cultural Acts']
+
+  const filteredArtists = filter === 'All' 
+    ? featuredArtistsData 
+    : featuredArtistsData.filter(a => a.category === filter)
+
+  return (
+    <section className="artists-directory-wrapper">
+      <div className="artists-directory-header">
+        <h2>FEATURED UAE ENTERTAINERS</h2>
+        <p>Explore top-rated verified performers for weddings, corporate galas & private parties</p>
+        <div className="artists-filter-pills">
+          {categories.map(cat => (
+            <button 
+              key={cat} 
+              className={`artist-cat-pill ${filter === cat ? 'active' : ''}`}
+              onClick={() => setFilter(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="artists-grid">
+        {filteredArtists.map(artist => (
+          <div className="artist-directory-card" key={artist.id}>
+            <div className="artist-dir-img" style={{ backgroundImage: `url(${artist.image})` }}>
+              <span className="artist-dir-location"><MapPin size={12} /> {artist.location}</span>
+            </div>
+            <div className="artist-dir-body">
+              <div className="artist-dir-top">
+                <h3>{artist.name}</h3>
+                <span className="artist-dir-rating"><Star size={14} fill="#f59e0b" stroke="#f59e0b" /> {artist.rating}</span>
+              </div>
+              <p className="artist-dir-sub">{artist.category} • {artist.genre}</p>
+              <div className="artist-dir-footer">
+                <span className="artist-dir-price">From <strong>{artist.price}</strong></span>
+                <button className="btn-artist-book">Book Artist</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function App() {
+  const [activeTab, setActiveTab] = useState('artists')
+
   return (
     <>
-      <ResponsiveHero />
-      <MainContentWrapper>
-        <TrustedBrands />
-        <FeaturedCategories />
-        <ExploreServices />
-        <HowItWorks />
-        <TrendingCollections />
-        <WhyChooseUs />
-        <CallToAction />
-      </MainContentWrapper>
+      <ResponsiveHero activeTab={activeTab} onSelectTab={setActiveTab} />
+      {activeTab !== 'artists' && (
+        <MainContentWrapper>
+          <TrustedBrands />
+          <FeaturedCategories />
+          <ExploreServices />
+          <ArtistEntertainmentOccasions />
+          <RamadanPerformancesSection />
+          <HowItWorks />
+          <TrendingCollections />
+          <WhyChooseUs />
+          <CallToAction />
+        </MainContentWrapper>
+      )}
       <Footer />
     </>
   )
