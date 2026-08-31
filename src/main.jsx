@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import {
   ArrowRight, Building2, CalendarDays, ChevronLeft, ChevronRight, Headphones, Heart,
   LockKeyhole, MapPin, Menu, Search, ShieldCheck, ShoppingCart, Sparkles, Users, Zap, Tag, Package, Navigation,
-  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star, Timer, Mic, UserRound, Camera, ConciergeBell
+  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star, Timer, Mic, UserRound, Camera, ConciergeBell, X
 } from 'lucide-react'
 import './index.css'
 
@@ -24,43 +24,92 @@ function Logo({ desktop = false, footer = false }) {
 }
 
 function Header({ activeTab, onSelectTab }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
     <div className="header-wrapper">
       <header className="header">
-      <a href="#top" className="brand-link" onClick={(e) => { e.preventDefault(); onSelectTab && onSelectTab('home') }}>
-        <Logo desktop />
-      </a>
-      <nav className="desktop-nav">
-        {navItems.map((item) => {
-          const itemKey = item.toLowerCase()
-          const isActive = activeTab === itemKey || (activeTab === 'home' && itemKey === 'explore')
-          return (
-            <div key={item} className="nav-item">
-              <a 
-                href={`#${itemKey}`} 
-                className={isActive ? 'nav-active' : ''}
-                onClick={(e) => {
-                  e.preventDefault()
-                  if (onSelectTab) onSelectTab(itemKey)
-                }}
-              >
-                {item}
-              </a>
-            </div>
-          )
-        })}
-      </nav>
-      <div className="header-actions">
-        <button aria-label="Search" className="icon-btn"><Search /></button>
-        <button aria-label="Wishlist" className="icon-btn"><Heart /></button>
-        <button className="cart icon-btn" aria-label="Cart, 2 items"><ShoppingCart /><span>2</span></button>
-        <div className="desktop-actions">
-          <button className="btn-signin">Sign In</button>
-          <button className="btn-list">List Your Service</button>
+        <a href="#top" className="brand-link" onClick={(e) => { e.preventDefault(); if (onSelectTab) onSelectTab('home'); setMobileMenuOpen(false); }}>
+          <Logo desktop />
+        </a>
+        <nav className="desktop-nav">
+          {navItems.map((item) => {
+            const itemKey = item.toLowerCase()
+            const isActive = activeTab === itemKey || (activeTab === 'home' && itemKey === 'explore')
+            return (
+              <div key={item} className="nav-item">
+                <a 
+                  href={`#${itemKey}`} 
+                  className={isActive ? 'nav-active' : ''}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onSelectTab) onSelectTab(itemKey)
+                  }}
+                >
+                  {item}
+                </a>
+              </div>
+            )
+          })}
+        </nav>
+        <div className="header-actions">
+          <button aria-label="Search" className="icon-btn"><Search /></button>
+          <button aria-label="Wishlist" className="icon-btn"><Heart /></button>
+          <button className="cart icon-btn" aria-label="Cart, 2 items"><ShoppingCart /><span>2</span></button>
+          <div className="desktop-actions">
+            <button className="btn-signin">Sign In</button>
+            <button className="btn-list">List Your Service</button>
+          </div>
+          <button 
+            className="menu icon-btn" 
+            aria-label="Toggle menu"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
-        <button className="menu icon-btn" aria-label="Open menu"><Menu /></button>
-      </div>
       </header>
+
+      {/* Mobile Menu Dropdown Overlay */}
+      {mobileMenuOpen && (
+        <motion.div 
+          className="md:hidden bg-[#7025bd] border-t border-purple-400/30 px-6 py-6 shadow-2xl flex flex-col gap-4 relative z-50 text-white"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
+        >
+          <nav className="flex flex-col gap-2">
+            {navItems.map((item) => {
+              const itemKey = item.toLowerCase()
+              const isActive = activeTab === itemKey || (activeTab === 'home' && itemKey === 'explore')
+              return (
+                <a
+                  key={item}
+                  href={`#${itemKey}`}
+                  className={`text-base font-semibold py-2.5 px-4 rounded-xl transition-colors ${isActive ? 'bg-purple-900/80 text-white font-bold border-l-4 border-white' : 'text-purple-100 hover:bg-purple-800/40'}`}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (onSelectTab) onSelectTab(itemKey)
+                    setMobileMenuOpen(false)
+                  }}
+                >
+                  {item}
+                </a>
+              )
+            })}
+          </nav>
+
+          <div className="pt-4 border-t border-purple-400/30 flex flex-col gap-3">
+            <button className="w-full py-3 rounded-xl bg-white text-[#7025bd] font-bold shadow-md">
+              Sign In
+            </button>
+            <button className="w-full py-3 rounded-xl bg-purple-900/80 border border-purple-300/40 text-white font-bold">
+              List Your Service
+            </button>
+          </div>
+        </motion.div>
+      )}
     </div>
   )
 }
@@ -2420,7 +2469,7 @@ function ArtistsPageContent() {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState('artists')
+  const [activeTab, setActiveTab] = useState('home')
 
   return (
     <>
