@@ -1271,7 +1271,9 @@ function LiveMusicPage({ onSelectTab }) {
       
       <section className="relative w-full bg-[#070511] text-white pt-28 pb-24 px-4 sm:px-6 lg:px-8 min-h-screen font-sans overflow-hidden">
         {/* Subtle background glow */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-600/15 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/3 left-10 w-[400px] h-[400px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-fuchsia-900/15 rounded-full blur-[130px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Breadcrumb / Back button */}
@@ -1282,69 +1284,285 @@ function LiveMusicPage({ onSelectTab }) {
             <ChevronLeft size={16} /> Back to Performers
           </button>
 
-          {/* Page Hero Header */}
-          <motion.div 
-            className="text-center max-w-4xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/40 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
-              <Music size={14} /> Premium Live Music & Vocalists
-            </span>
-            
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
-              Live Music <span className="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-300 bg-clip-text text-transparent">Performances</span>
-            </h1>
-            
-            <p className="text-base sm:text-lg text-slate-300/85 max-w-2xl mx-auto leading-relaxed">
-              From soulful melodies to high-energy bands, live music that connects and transforms your event into an unforgettable celebration.
-            </p>
-
-            <div className="flex items-center justify-center gap-2 mt-6">
-              <span className="w-10 h-1 rounded-full bg-purple-500" />
-              <span className="w-2.5 h-1 rounded-full bg-purple-400" />
-            </div>
-          </motion.div>
-
-          {/* Photos Showcase Section (yal-1.jpeg and yal-2.jpeg) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-            {/* Image 1: yal-1.jpeg */}
+          {/* Artist Hero Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-20">
+            {/* Left Copy */}
             <motion.div 
-              className="group relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#180e33]/90 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400/80 transition-all duration-500 cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              whileHover={{ y: -6 }}
+              className="lg:col-span-7"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="relative w-full h-[420px] sm:h-[500px] overflow-hidden">
-                <img 
-                  src="/yal-1.jpeg" 
-                  alt="Live Music Performance 1" 
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent opacity-70 pointer-events-none" />
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-950/70 border border-purple-500/40 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4 shadow-[0_0_12px_rgba(168,85,247,0.3)]">
+                <Music size={14} /> Singer • Songwriter • Poet • Multidisciplinary Artist
+              </span>
+
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-4 leading-none font-serif">
+                YAL <span className="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-300 bg-clip-text text-transparent">SOLAN</span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-300/90 leading-relaxed mb-8 max-w-2xl font-light">
+                Lebanese singer, songwriter, poet and multidisciplinary artist bringing together soulful vocals, oriental roots, alternative sounds and mystical influences.
+              </p>
+
+              <div className="flex flex-wrap gap-4 items-center">
+                <button className="px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white font-semibold shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all cursor-pointer flex items-center gap-2">
+                  <Calendar size={18} /> Book Yal Solan
+                </button>
+                <a href="#artist-gallery" className="px-7 py-3.5 rounded-full bg-purple-950/60 border border-purple-500/40 hover:border-purple-300 text-purple-200 font-medium transition-all flex items-center gap-2">
+                  <Music size={16} /> Experience Live
+                </a>
               </div>
             </motion.div>
 
-            {/* Image 2: yal-2.jpeg */}
+            {/* Right Hero Image Gallery Grid */}
             <motion.div 
-              className="group relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#180e33]/90 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400/80 transition-all duration-500 cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="lg:col-span-5 grid grid-cols-2 gap-4"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ y: -6 }}
             >
-              <div className="relative w-full h-[420px] sm:h-[500px] overflow-hidden">
-                <img 
-                  src="/yal-2.jpeg" 
-                  alt="Live Music Performance 2" 
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent opacity-70 pointer-events-none" />
+              <div className="relative rounded-3xl overflow-hidden border border-purple-500/40 shadow-[0_15px_35px_rgba(0,0,0,0.6)] group h-[320px] sm:h-[380px]">
+                <img src="/yal-1.jpeg" alt="Yal Solan Performance 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent opacity-60" />
+              </div>
+              <div className="relative rounded-3xl overflow-hidden border border-purple-500/40 shadow-[0_15px_35px_rgba(0,0,0,0.6)] group h-[320px] sm:h-[380px] translate-y-6">
+                <img src="/yal-2.jpeg" alt="Yal Solan Performance 2" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent opacity-60" />
               </div>
             </motion.div>
           </div>
+
+          {/* Section Divider */}
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent my-16" />
+
+          {/* ARTIST BIOGRAPHY SECTION */}
+          <motion.div 
+            className="mb-20 max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-8 h-[2px] bg-purple-500" />
+              <h2 className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-purple-400">ARTIST BIOGRAPHY</h2>
+            </div>
+
+            <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-8 font-serif leading-tight">
+              Soulful Vocals, Oriental Roots & <span className="text-purple-400">Mystical Influences</span>
+            </h3>
+
+            <div className="bg-gradient-to-b from-[#140a2a]/80 via-[#0e071e]/90 to-[#070510]/95 border border-purple-500/30 rounded-[32px] p-7 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.5)] space-y-6 text-slate-300/90 text-base sm:text-lg font-light leading-relaxed">
+              <p>
+                Yal Solan is a Lebanese singer, songwriter, poet and multidisciplinary artist whose music brings together soulful vocals, oriental roots, alternative sounds and mystical influences.
+              </p>
+              <p>
+                Her artistic journey began at university, where she joined a chamber choir and discovered her voice. Since then, she has developed a distinctive musical identity that moves between Arabic and English, combining ethereal vocals with oriental and contemporary sounds.
+              </p>
+              <p>
+                Yal first gained wider recognition in the Arab world through “Chou Original,” the theme song of Salon Zahra, performed in collaboration with her mentor Mike Massy. Since 2022, she has released original music including “Silent Fireworks,” “Toss & Turn,” “La7ali,” “Manam” and “Ya Enay Kafak Alam.”
+              </p>
+              <p>
+                Her work extends beyond music into animation, graphic design, acting, modelling and voice-over, creating a multidimensional artistic presence that connects visual storytelling, performance and music.
+              </p>
+              <p className="text-purple-200 font-normal italic border-l-2 border-purple-500 pl-4 py-1">
+                “Yal's sound is intimate, atmospheric and deeply expressive — making every performance an opportunity to connect, discover and feel.”
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Section Divider */}
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent my-16" />
+
+          {/* PERFORMANCE DETAILS SECTION */}
+          <motion.div 
+            className="mb-20 max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-8 h-[2px] bg-purple-500" />
+              <h2 className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-purple-400">PERFORMANCE DETAILS</h2>
+            </div>
+
+            <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 font-serif leading-tight">
+              A UNIQUE LIVE MUSIC EXPERIENCE
+            </h3>
+
+            <p className="text-base sm:text-lg text-slate-300/90 leading-relaxed mb-10 font-light">
+              Yal performs either as a solo Artists with an ensemble band, bringing her original music and distinctive fusion of oriental and contemporary sounds to live audiences. Her performances have been presented at cultural and artistic events including Sofar Sounds, Fête de la Musique, Metro Al Madina, Raseef22 and XP Music Futures in Riyadh.
+            </p>
+
+            {/* PERFORMANCE STYLE & HIGHLIGHTS */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              {/* Style Card */}
+              <div className="bg-gradient-to-b from-[#160b2e]/90 to-[#080414]/95 border border-purple-500/30 rounded-[28px] p-7 sm:p-8 shadow-[0_15px_35px_rgba(0,0,0,0.5)]">
+                <h4 className="text-xl font-bold text-white mb-3">PERFORMANCE STYLE</h4>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {['Soul', 'Alternative', 'World Music', 'Oriental Fusion'].map((style) => (
+                    <span key={style} className="px-3.5 py-1.5 rounded-full bg-purple-950/70 border border-purple-400/40 text-purple-300 text-xs font-semibold">
+                      {style}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="space-y-3 text-slate-300 text-sm sm:text-base">
+                  <li className="flex items-start gap-2.5">
+                    <Sparkles size={18} className="text-purple-400 shrink-0 mt-0.5" />
+                    <span>Original Yal Solan compositions</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <Sparkles size={18} className="text-purple-400 shrink-0 mt-0.5" />
+                    <span>Arabic & English songs</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <Sparkles size={18} className="text-purple-400 shrink-0 mt-0.5" />
+                    <span>Soulful and atmospheric vocal performances</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <Sparkles size={18} className="text-purple-400 shrink-0 mt-0.5" />
+                    <span>Oriental-inspired sounds</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <Sparkles size={18} className="text-purple-400 shrink-0 mt-0.5" />
+                    <span>Contemporary alternative music</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <Sparkles size={18} className="text-purple-400 shrink-0 mt-0.5" />
+                    <span>Selected covers adapted to the character of the event</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Ideal For Card */}
+              <div className="bg-gradient-to-b from-[#160b2e]/90 to-[#080414]/95 border border-purple-500/30 rounded-[28px] p-7 sm:p-8 shadow-[0_15px_35px_rgba(0,0,0,0.5)]">
+                <h4 className="text-xl font-bold text-white mb-6">IDEAL FOR</h4>
+                
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    'Corporate Events',
+                    'Private Events',
+                    'Brand Activations',
+                    'Cultural Events',
+                    'Festivals',
+                    'Lifestyle Events',
+                    'Dinner Experiences',
+                    'Intimate Gatherings'
+                  ].map((occasion) => (
+                    <div key={occasion} className="flex items-center gap-2 p-3 rounded-xl bg-purple-950/40 border border-purple-500/20 text-slate-200 text-xs sm:text-sm font-medium">
+                      <span className="w-2 h-2 rounded-full bg-purple-400" />
+                      <span>{occasion}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* BOOKING OPTIONS */}
+            <div className="mb-12">
+              <h4 className="text-2xl font-bold text-white mb-6">BOOKING OPTIONS</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-gradient-to-b from-[#1b0d38]/90 to-[#090417]/95 border border-purple-400/50 rounded-[26px] p-7 shadow-[0_15px_35px_rgba(147,51,234,0.2)]">
+                  <h5 className="text-xl font-bold text-white mb-2">Solo Performance</h5>
+                  <p className="text-slate-300 text-sm leading-relaxed">
+                    Yal performing with a minimal setup for intimate occasions.
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-b from-[#1b0d38]/90 to-[#090417]/95 border border-purple-400/50 rounded-[26px] p-7 shadow-[0_15px_35px_rgba(147,51,234,0.2)]">
+                  <h5 className="text-xl font-bold text-white mb-2">Live Ensemble</h5>
+                  <p className="text-slate-300 text-sm leading-relaxed">
+                    Yal accompanied by her musicians for a fuller, immersive live experience.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* TECHNICAL & DURATION SPECIFICATIONS */}
+            <div className="bg-purple-950/40 border border-purple-500/30 rounded-[26px] p-7 space-y-4">
+              <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                <Timer className="text-purple-400" size={20} /> PERFORMANCE DETAILS & SPECIFICATIONS
+              </h4>
+              <div className="text-slate-300 text-sm sm:text-base space-y-2 leading-relaxed">
+                <p><strong className="text-white">Duration:</strong> 90 Minutes split into 2 sets.</p>
+                <p className="text-slate-400 text-xs sm:text-sm">
+                  * Price includes artist fees and client must still cover the cost of stage and sound system as per the artists technical rider.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Section Divider */}
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent my-16" id="artist-gallery" />
+
+          {/* ARTIST GALLERY SECTION */}
+          <motion.div 
+            className="max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-8 h-[2px] bg-purple-500" />
+              <h2 className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-purple-400">ARTIST GALLERY</h2>
+            </div>
+
+            <h3 className="text-3xl sm:text-5xl font-extrabold text-white mb-3 font-serif">
+              EXPERIENCE YAL LIVE
+            </h3>
+            <p className="text-slate-400 text-base mb-10">Watch. Listen. Discover.</p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              {/* Featured Performance Video Placeholder */}
+              <div className="bg-gradient-to-b from-[#180e33]/90 to-[#070510]/98 border border-purple-500/30 rounded-[28px] p-6 shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
+                <h4 className="text-lg font-bold text-white mb-1">Featured Performance</h4>
+                <p className="text-xs text-slate-400 mb-4">Watch Yal Solan perform live</p>
+                
+                {/* Video Placeholder */}
+                <div className="relative w-full h-[260px] sm:h-[300px] rounded-2xl overflow-hidden group cursor-pointer">
+                  <img src="/yal-1.jpeg" alt="Yal Solan Performance" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-purple-600/90 text-white flex items-center justify-center shadow-[0_0_25px_rgba(168,85,247,0.8)] group-hover:scale-110 transition-transform">
+                      <Music size={28} className="ml-0.5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Featured Artist Photo */}
+              <div className="bg-gradient-to-b from-[#180e33]/90 to-[#070510]/98 border border-purple-500/30 rounded-[28px] p-6 shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
+                <h4 className="text-lg font-bold text-white mb-1">Featured Artist Photo</h4>
+                <p className="text-xs text-slate-400 mb-4">Official Artist Portrait</p>
+                
+                <div className="relative w-full h-[260px] sm:h-[300px] rounded-2xl overflow-hidden group">
+                  <img src="/yal-2.jpeg" alt="Yal Solan Portrait" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+              </div>
+            </div>
+
+            {/* LISTEN TO YAL PLATFORM BUTTONS */}
+            <div className="bg-gradient-to-r from-[#180a30] via-[#100622] to-[#180a30] border border-purple-500/40 rounded-[28px] p-8 text-center shadow-[0_15px_40px_rgba(147,51,234,0.25)]">
+              <h4 className="text-2xl font-extrabold text-white mb-2">LISTEN TO YAL</h4>
+              <p className="text-sm text-slate-300 mb-6 max-w-lg mx-auto">
+                Discover Yal's latest releases and original music across streaming platforms.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-4">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 rounded-full bg-red-600/90 hover:bg-red-600 text-white font-semibold text-sm transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(220,38,38,0.4)] cursor-pointer">
+                  ▶ WATCH ON YOUTUBE
+                </a>
+                <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 rounded-full bg-emerald-600/90 hover:bg-emerald-600 text-white font-semibold text-sm transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(5,150,105,0.4)] cursor-pointer">
+                  ♫ LISTEN ON SPOTIFY
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
     </main>
