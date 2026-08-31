@@ -386,7 +386,7 @@ const entertainerOccasionsData = [
   }
 ]
 
-function ArtistEntertainmentOccasions() {
+function ArtistEntertainmentOccasions({ onSelectTab }) {
   return (
     <section className="relative w-full overflow-hidden bg-[#070611] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans">
       {/* Ambient background glows */}
@@ -456,6 +456,12 @@ function ArtistEntertainmentOccasions() {
             return (
               <motion.div
                 key={item.title}
+                onClick={() => {
+                  if (item.title === 'Live Music' && onSelectTab) {
+                    onSelectTab('live-music')
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                }}
                 className={`group relative flex flex-col justify-between overflow-hidden rounded-[26px] cursor-pointer transition-all duration-500 ease-out ${item.rotationClass} w-[210px] lg:w-[245px] xl:w-[260px] h-[450px] lg:h-[490px] z-20 bg-gradient-to-b from-[#180e33]/90 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/25 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-purple-400/80 hover:shadow-[0_20px_45px_rgba(147,51,234,0.45)]`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -555,7 +561,13 @@ function ArtistEntertainmentOccasions() {
             return (
               <motion.div
                 key={item.title}
-                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[24px] bg-gradient-to-b from-[#180e33]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 p-5"
+                onClick={() => {
+                  if (item.title === 'Live Music' && onSelectTab) {
+                    onSelectTab('live-music')
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                }}
+                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[24px] bg-gradient-to-b from-[#180e33]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 p-5 cursor-pointer"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -1031,30 +1043,21 @@ function EventSpecialistsSection() {
       </motion.div>
 
       {/* Desktop 5-Card Showcase Layout */}
-      <div className="hidden md:block relative z-20 max-w-[1500px] mx-auto pt-10">
+      <div className="hidden md:block relative z-20 max-w-[1500px] mx-auto pt-4">
         <div className="flex justify-center items-stretch gap-4 lg:gap-5 xl:gap-6 px-2">
           {specialistCardsData.map((card, idx) => {
-            const IconComponent = card.icon
             return (
               <motion.div
                 key={card.title}
-                className={`group relative flex flex-col justify-between overflow-visible rounded-[30px] cursor-pointer transition-all duration-600 ease-out ${card.rotationClass} w-[220px] lg:w-[260px] xl:w-[275px] min-h-[580px] lg:min-h-[630px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_20px_50px_rgba(168,85,247,0.45)]`}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-[30px] cursor-pointer transition-all duration-600 ease-out ${card.rotationClass} w-[220px] lg:w-[260px] xl:w-[275px] min-h-[560px] lg:min-h-[600px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_20px_50px_rgba(168,85,247,0.45)]`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 whileHover={{ y: -8, rotate: 0 }}
               >
-                {/* Floating Top Circular Badge (OVERLAPPING TOP EDGE) */}
-                <motion.div 
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-900/90 via-[#180a30]/95 to-[#0c051a] border-2 border-purple-400/80 shadow-[0_0_25px_rgba(168,85,247,0.6)] backdrop-blur-md flex items-center justify-center text-purple-200 absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 z-30 group-hover:border-fuchsia-300 group-hover:text-white transition-all duration-300"
-                  whileHover={{ y: -4 }}
-                >
-                  <IconComponent className="w-7 h-7 sm:w-9 sm:h-9" />
-                </motion.div>
-
                 {/* Upper Photography Area with Organic Curved Mask */}
-                <div className="relative w-full h-[290px] lg:h-[320px] rounded-t-[30px] overflow-hidden pt-4">
+                <div className="relative w-full h-[290px] lg:h-[320px] overflow-hidden">
                   <img 
                     src={card.image} 
                     alt={card.title} 
@@ -1106,24 +1109,18 @@ function EventSpecialistsSection() {
       </div>
 
       {/* Mobile Horizontal Swipe Experience (< 768px) */}
-      <div className="md:hidden relative z-20 pt-8">
+      <div className="md:hidden relative z-20 pt-4">
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-8 no-scrollbar scroll-smooth">
           {specialistCardsData.map((card, idx) => {
-            const IconComponent = card.icon
             return (
               <motion.div
                 key={card.title}
-                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-visible rounded-[26px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 p-6 pt-10 relative mt-6"
+                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[26px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 p-5 relative"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                {/* Floating Icon Circle */}
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-900/90 to-[#180a30] border-2 border-purple-400/80 shadow-[0_0_20px_rgba(168,85,247,0.5)] flex items-center justify-center text-purple-200 absolute -top-7 left-6 z-30">
-                  <IconComponent className="w-7 h-7" />
-                </div>
-
                 <div className="relative w-full h-[180px] rounded-2xl overflow-hidden mb-4">
                   <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0e071e] via-transparent to-transparent" />
@@ -1267,14 +1264,105 @@ function ArtistFAQSection() {
   )
 }
 
+function LiveMusicPage({ onSelectTab }) {
+  return (
+    <main className="site-wrapper" id="top">
+      <Header activeTab="live-music" onSelectTab={onSelectTab} />
+      
+      <section className="relative w-full bg-[#070511] text-white pt-28 pb-24 px-4 sm:px-6 lg:px-8 min-h-screen font-sans overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-600/15 rounded-full blur-[130px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Breadcrumb / Back button */}
+          <button 
+            onClick={() => onSelectTab && onSelectTab('artists')} 
+            className="inline-flex items-center gap-2 text-sm text-purple-300 hover:text-white mb-8 px-5 py-2.5 rounded-full bg-purple-950/60 border border-purple-500/40 hover:border-purple-400 transition-all shadow-[0_0_15px_rgba(147,51,234,0.2)] cursor-pointer"
+          >
+            <ChevronLeft size={16} /> Back to Performers
+          </button>
+
+          {/* Page Hero Header */}
+          <motion.div 
+            className="text-center max-w-4xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/40 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
+              <Music size={14} /> Premium Live Music & Vocalists
+            </span>
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
+              Live Music <span className="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-300 bg-clip-text text-transparent">Performances</span>
+            </h1>
+            
+            <p className="text-base sm:text-lg text-slate-300/85 max-w-2xl mx-auto leading-relaxed">
+              From soulful melodies to high-energy bands, live music that connects and transforms your event into an unforgettable celebration.
+            </p>
+
+            <div className="flex items-center justify-center gap-2 mt-6">
+              <span className="w-10 h-1 rounded-full bg-purple-500" />
+              <span className="w-2.5 h-1 rounded-full bg-purple-400" />
+            </div>
+          </motion.div>
+
+          {/* Photos Showcase Section (yal-1.jpeg and yal-2.jpeg) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+            {/* Image 1: yal-1.jpeg */}
+            <motion.div 
+              className="group relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#180e33]/90 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400/80 transition-all duration-500 cursor-pointer"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              whileHover={{ y: -6 }}
+            >
+              <div className="relative w-full h-[420px] sm:h-[500px] overflow-hidden">
+                <img 
+                  src="/yal-1.jpeg" 
+                  alt="Live Music Performance 1" 
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent opacity-70 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            {/* Image 2: yal-2.jpeg */}
+            <motion.div 
+              className="group relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[#180e33]/90 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400/80 transition-all duration-500 cursor-pointer"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -6 }}
+            >
+              <div className="relative w-full h-[420px] sm:h-[500px] overflow-hidden">
+                <img 
+                  src="/yal-2.jpeg" 
+                  alt="Live Music Performance 2" 
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent opacity-70 pointer-events-none" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
 function ResponsiveHero({ activeTab, onSelectTab }) {
+  if (activeTab === 'live-music') {
+    return <LiveMusicPage onSelectTab={onSelectTab} />
+  }
+
   if (activeTab === 'artists') {
     return (
       <main className="site-wrapper" id="top">
         <Header activeTab={activeTab} onSelectTab={onSelectTab} />
         <ArtistsHero />
         <BrandPartnersSection />
-        <ArtistEntertainmentOccasions />
+        <ArtistEntertainmentOccasions onSelectTab={onSelectTab} />
         <RamadanPerformancesSection />
         <EventSpecialistsSection />
         <WhyChooseEventitSection />
@@ -2119,12 +2207,12 @@ function App() {
   return (
     <>
       <ResponsiveHero activeTab={activeTab} onSelectTab={setActiveTab} />
-      {activeTab !== 'artists' && (
+      {activeTab !== 'artists' && activeTab !== 'live-music' && (
         <MainContentWrapper>
           <TrustedBrands />
           <FeaturedCategories />
           <ExploreServices />
-          <ArtistEntertainmentOccasions />
+          <ArtistEntertainmentOccasions onSelectTab={setActiveTab} />
           <RamadanPerformancesSection />
           <EventSpecialistsSection />
           <HowItWorks />
