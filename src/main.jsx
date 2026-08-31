@@ -93,11 +93,11 @@ function SearchBar() {
 }
 
 function Benefits() {
-  const list = [
-    ['Direct Booking with Performers', 'Skip middleman fees & connect with artists instantly'],
-    ['Verified & Vetted Artists', 'Ratings, reviews & verified portfolio for peace of mind'],
-    ['Tailored to Your Budget', 'Flexible packages & transparent pricing with no surprises'],
-    ['Instant Availability Check', 'Check real-time artist schedules & lock in dates fast']
+  const items = [
+    [ShieldCheck, 'Direct Booking with Performers', 'Skip middleman fees & connect with artists instantly'],
+    [Zap, 'Verified & Vetted Artists', 'Ratings, reviews & verified portfolio for peace of mind'],
+    [Tag, 'Tailored to Your Budget', 'Flexible packages & transparent pricing with no surprises'],
+    [CalendarDays, 'Instant Availability Check', 'Check real-time artist schedules & lock in dates fast']
   ]
   return (
     <div className="benefits">
