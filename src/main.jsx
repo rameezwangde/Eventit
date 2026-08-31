@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import {
   ArrowRight, Building2, CalendarDays, ChevronLeft, ChevronRight, Headphones, Heart,
   LockKeyhole, MapPin, Menu, Search, ShieldCheck, ShoppingCart, Sparkles, Users, Zap, Tag, Package, Navigation,
-  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star, Timer, Mic
+  Speaker, UtensilsCrossed, Armchair, PartyPopper, Palette, Gift, Music, Gem, Calendar, Star, Timer, Mic, UserRound, Camera, ConciergeBell
 } from 'lucide-react'
 import './index.css'
 
@@ -910,54 +910,233 @@ function RamadanPerformancesSection() {
   )
 }
 
-const specialistItems = [
+const specialistCardsData = [
   {
-    title: 'Event Specialists',
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop'
+    number: "01",
+    title: "Event Specialists",
+    description: "Experienced event experts who plan, manage and execute unforgettable experiences.",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
+    icon: UserRound,
+    rotationClass: "lg:rotate-[3deg]"
   },
   {
-    title: 'Art & Crafts',
-    image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=800&auto=format&fit=crop'
+    number: "02",
+    title: "Art & Crafts",
+    description: "Creative artists and crafters who add colour, culture and personality to every event.",
+    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=800&auto=format&fit=crop",
+    icon: Palette,
+    rotationClass: "lg:-rotate-[2deg]"
   },
   {
-    title: 'Wellness & Beauty',
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop'
+    number: "03",
+    title: "Wellness & Beauty",
+    description: "Professional beauty and wellness experts dedicated to enhancing comfort and confidence.",
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop",
+    icon: Sparkles,
+    rotationClass: "rotate-0"
   },
   {
-    title: 'Photographers & Videographers',
-    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop'
+    number: "04",
+    title: "Photographers &\nVideographers",
+    description: "Capturing every moment with creativity and precision to tell your event's story.",
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop",
+    icon: Camera,
+    rotationClass: "lg:rotate-[2deg]"
   },
   {
-    title: 'Traditional Services',
-    image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=800&auto=format&fit=crop'
+    number: "05",
+    title: "Traditional Services",
+    description: "Trusted traditional service providers who bring authenticity and excellence to every celebration.",
+    image: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=800&auto=format&fit=crop",
+    icon: ConciergeBell,
+    rotationClass: "lg:-rotate-[3deg]"
   }
 ]
 
 function EventSpecialistsSection() {
   return (
-    <section className="entertainment-occasions-section specialists-section">
-      <div className="occasions-header">
-        <h2 className="occasions-title">Explore Event Specialists & Professional Staff for Event</h2>
-        <div className="occasions-title-line">
-          <span className="line-primary"></span>
-          <span className="line-secondary"></span>
+    <section className="relative w-full overflow-hidden bg-[#070511] text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 font-sans">
+      {/* Background Radial Glows & Waves */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-10 left-[-100px] w-[450px] h-[450px] bg-purple-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 right-[-100px] w-[450px] h-[450px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Decorative Wave Lines behind cards */}
+      <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none z-0 opacity-20">
+        <svg className="w-full h-48 text-purple-500/40" viewBox="0 0 1200 200" fill="none" preserveAspectRatio="none">
+          <path d="M 0,100 Q 300,20 600,100 T 1200,100" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M 0,140 Q 300,60 600,140 T 1200,140" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+        </svg>
+      </div>
+
+      {/* Faint Dotted Matrix at bottom corners */}
+      <div className="absolute bottom-8 left-8 opacity-15 pointer-events-none hidden sm:block">
+        <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+          {Array.from({ length: 4 }).map((_, r) =>
+            Array.from({ length: 6 }).map((_, c) => (
+              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#A855F7" />
+            ))
+          )}
+        </svg>
+      </div>
+      <div className="absolute bottom-8 right-8 opacity-15 pointer-events-none hidden sm:block">
+        <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+          {Array.from({ length: 4 }).map((_, r) =>
+            Array.from({ length: 6 }).map((_, c) => (
+              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#A855F7" />
+            ))
+          )}
+        </svg>
+      </div>
+
+      {/* Top Small Ornament Composition: ──── ◇ ─── ★ ─── ◇ ──── */}
+      <motion.div 
+        className="text-center max-w-4xl mx-auto mb-16 sm:mb-20 relative z-20"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="w-12 sm:w-16 h-[1px] bg-purple-500/40" />
+          <span className="w-2.5 h-2.5 rotate-45 border border-purple-400/80" />
+          <span className="w-10 sm:w-14 h-[1px] bg-purple-500/40" />
+          <div className="w-7 h-7 rounded-full bg-purple-950/80 border border-purple-400/60 flex items-center justify-center text-purple-300 shadow-[0_0_12px_rgba(168,85,247,0.4)]">
+            <Star className="w-3.5 h-3.5 fill-purple-300" />
+          </div>
+          <span className="w-10 sm:w-14 h-[1px] bg-purple-500/40" />
+          <span className="w-2.5 h-2.5 rotate-45 border border-purple-400/80" />
+          <span className="w-12 sm:w-16 h-[1px] bg-purple-500/40" />
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight leading-[1.15] text-white mb-4">
+          Explore Event Specialists &<br />
+          <span className="bg-gradient-to-r from-purple-500 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+            Professional Staff for Event
+          </span>
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-sm sm:text-base md:text-lg text-slate-300/80 max-w-2xl mx-auto leading-relaxed mb-6 font-normal">
+          From creative experts to skilled professionals,<br className="hidden sm:inline" />
+          find everything you need to bring your event to life.
+        </p>
+
+        {/* EventIt Two Short Lines Divider */}
+        <div className="flex items-center justify-center gap-2">
+          <span className="w-10 h-1 rounded-full bg-purple-500" />
+          <span className="w-2.5 h-1 rounded-full bg-purple-400" />
+        </div>
+      </motion.div>
+
+      {/* Desktop 5-Card Showcase Layout */}
+      <div className="hidden md:block relative z-20 max-w-[1500px] mx-auto pt-10">
+        <div className="flex justify-center items-stretch gap-4 lg:gap-5 xl:gap-6 px-2">
+          {specialistCardsData.map((card, idx) => {
+            const IconComponent = card.icon
+            return (
+              <motion.div
+                key={card.title}
+                className={`group relative flex flex-col justify-between overflow-visible rounded-[30px] cursor-pointer transition-all duration-600 ease-out ${card.rotationClass} w-[220px] lg:w-[260px] xl:w-[275px] min-h-[580px] lg:min-h-[630px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_20px_50px_rgba(168,85,247,0.45)]`}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                whileHover={{ y: -8, rotate: 0 }}
+              >
+                {/* Floating Top Circular Badge (OVERLAPPING TOP EDGE) */}
+                <motion.div 
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-900/90 via-[#180a30]/95 to-[#0c051a] border-2 border-purple-400/80 shadow-[0_0_25px_rgba(168,85,247,0.6)] backdrop-blur-md flex items-center justify-center text-purple-200 absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 z-30 group-hover:border-fuchsia-300 group-hover:text-white transition-all duration-300"
+                  whileHover={{ y: -4 }}
+                >
+                  <IconComponent className="w-7 h-7 sm:w-9 sm:h-9" />
+                </motion.div>
+
+                {/* Upper Photography Area with Organic Curved Mask */}
+                <div className="relative w-full h-[290px] lg:h-[320px] rounded-t-[30px] overflow-hidden pt-4">
+                  <img 
+                    src={card.image} 
+                    alt={card.title} 
+                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e071e] via-[#0e071e]/30 to-transparent pointer-events-none" />
+
+                  {/* Organic Wave Divider Mask at bottom of image */}
+                  <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
+                    <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 text-[#0e071e] fill-current">
+                      <path d="M0,30 Q 250,75 500,20 L500,80 L0,80 Z" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Lower Content Area */}
+                <div className="p-6 relative z-20 flex flex-col justify-between flex-1">
+                  <div>
+                    {/* Category Number */}
+                    <div className="text-purple-400 font-extrabold text-3xl lg:text-4xl mb-1 tracking-tight group-hover:text-purple-300 transition-colors">
+                      {card.number}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-2 leading-tight font-sans whitespace-pre-line">
+                      {card.title}
+                    </h3>
+
+                    {/* Decorative Line: ━━━━ • ━ */}
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="w-7 h-[2px] bg-purple-500/70" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shadow-[0_0_8px_#a855f7]" />
+                      <span className="w-3 h-[2px] bg-purple-500/50" />
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-xs lg:text-sm text-slate-300/80 font-normal leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Concentrated Purple Bottom Border Glow */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-purple-400 shadow-[0_0_15px_#c026d3] z-30 group-hover:w-36 group-hover:bg-fuchsia-400 transition-all duration-500" />
+              </motion.div>
+            )
+          })}
         </div>
       </div>
-      <div className="occasions-container">
-        <div className="occasions-grid">
-          {specialistItems.map((item) => (
-            <motion.div 
-              key={item.title} 
-              className="occasion-card"
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.25 }}
-            >
-              <div className="occasion-img-wrapper">
-                <img src={item.image} alt={item.title} className="occasion-img" />
-              </div>
-              <h3 className="occasion-card-title">{item.title}</h3>
-            </motion.div>
-          ))}
+
+      {/* Mobile Horizontal Swipe Experience (< 768px) */}
+      <div className="md:hidden relative z-20 pt-8">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-8 no-scrollbar scroll-smooth">
+          {specialistCardsData.map((card, idx) => {
+            const IconComponent = card.icon
+            return (
+              <motion.div
+                key={card.title}
+                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-visible rounded-[26px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 p-6 pt-10 relative mt-6"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                {/* Floating Icon Circle */}
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-900/90 to-[#180a30] border-2 border-purple-400/80 shadow-[0_0_20px_rgba(168,85,247,0.5)] flex items-center justify-center text-purple-200 absolute -top-7 left-6 z-30">
+                  <IconComponent className="w-7 h-7" />
+                </div>
+
+                <div className="relative w-full h-[180px] rounded-2xl overflow-hidden mb-4">
+                  <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e071e] via-transparent to-transparent" />
+                </div>
+
+                <div>
+                  <div className="text-purple-400 font-extrabold text-2xl mb-1">{card.number}</div>
+                  <h3 className="text-xl font-bold text-white mb-2 whitespace-pre-line">{card.title}</h3>
+                  <p className="text-xs text-slate-300/80 leading-relaxed">{card.description}</p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -1947,6 +2126,7 @@ function App() {
           <ExploreServices />
           <ArtistEntertainmentOccasions />
           <RamadanPerformancesSection />
+          <EventSpecialistsSection />
           <HowItWorks />
           <TrendingCollections />
           <WhyChooseUs />
