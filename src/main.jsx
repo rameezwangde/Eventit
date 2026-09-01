@@ -437,40 +437,40 @@ const entertainerOccasionsData = [
 
 function ArtistEntertainmentOccasions({ onSelectTab }) {
   return (
-    <section className="relative w-full overflow-hidden bg-[#070611] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f3e8ff] via-[#f8f4ff] to-[#eeddff] text-slate-900 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans">
       {/* Ambient background glows */}
-      <div className="absolute top-10 left-[-100px] w-[450px] h-[450px] bg-purple-900/25 rounded-full blur-[110px] pointer-events-none" />
-      <div className="absolute top-20 right-[-120px] w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-10 left-[-100px] w-[450px] h-[450px] bg-purple-300/40 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute top-20 right-[-120px] w-[500px] h-[500px] bg-fuchsia-200/50 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-400/20 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Decorative Dotted Matrix (Top-Left) */}
-      <div className="absolute top-8 left-8 opacity-25 pointer-events-none hidden sm:block">
+      <div className="absolute top-8 left-8 opacity-40 pointer-events-none hidden sm:block">
         <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
           {Array.from({ length: 4 }).map((_, r) =>
             Array.from({ length: 6 }).map((_, c) => (
-              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#A855F7" />
+              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#9333EA" />
             ))
           )}
         </svg>
       </div>
 
       {/* Decorative Circular Arcs (Top-Right) */}
-      <div className="absolute top-0 right-0 opacity-20 pointer-events-none hidden md:block overflow-hidden w-64 h-64">
+      <div className="absolute top-0 right-0 opacity-30 pointer-events-none hidden md:block overflow-hidden w-64 h-64">
         <svg width="300" height="300" viewBox="0 0 300 300" fill="none" className="translate-x-12 -translate-y-12">
-          <circle cx="200" cy="100" r="70" stroke="#A855F7" strokeWidth="1" />
-          <circle cx="200" cy="100" r="120" stroke="#A855F7" strokeWidth="1" strokeDasharray="4 4" />
-          <circle cx="200" cy="100" r="170" stroke="#A855F7" strokeWidth="1" />
+          <circle cx="200" cy="100" r="70" stroke="#9333EA" strokeWidth="1" />
+          <circle cx="200" cy="100" r="120" stroke="#9333EA" strokeWidth="1" strokeDasharray="4 4" />
+          <circle cx="200" cy="100" r="170" stroke="#9333EA" strokeWidth="1" />
         </svg>
       </div>
 
       {/* Floating 3D Purple Orbs */}
       <motion.div 
-        className="absolute top-16 right-10 lg:right-24 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-400 via-purple-600 to-indigo-950 shadow-[0_10px_30px_rgba(147,51,234,0.6)] blur-[0.5px] pointer-events-none z-10 opacity-80"
+        className="absolute top-16 right-10 lg:right-24 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-300 via-purple-500 to-indigo-600 shadow-[0_10px_30px_rgba(147,51,234,0.35)] blur-[0.5px] pointer-events-none z-10 opacity-80"
         animate={{ y: [0, -14, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="absolute bottom-10 left-4 lg:left-12 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-fuchsia-500 via-purple-700 to-slate-950 shadow-[0_10px_35px_rgba(168,85,247,0.5)] blur-[0.5px] pointer-events-none z-10 opacity-70"
+        className="absolute bottom-10 left-4 lg:left-12 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-fuchsia-400 via-purple-500 to-purple-800 shadow-[0_10px_35px_rgba(168,85,247,0.3)] blur-[0.5px] pointer-events-none z-10 opacity-70"
         animate={{ y: [0, 16, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -483,17 +483,17 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight leading-[1.15] text-white mb-4 sm:mb-5">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight leading-[1.15] text-slate-900 mb-4 sm:mb-5">
           Event Entertainment &<br />
-          Performers for <span className="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-300 bg-clip-text text-transparent">Every Occasion</span>
+          Performers for <span className="bg-gradient-to-r from-purple-700 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">Every Occasion</span>
         </h2>
-        <p className="text-xs sm:text-sm md:text-base text-slate-300/80 max-w-2xl mx-auto leading-relaxed mb-4">
+        <p className="text-xs sm:text-sm md:text-base text-purple-950/80 max-w-2xl mx-auto leading-relaxed mb-4 font-medium">
           From high-energy performances to immersive experiences,<br className="hidden sm:inline" />
-          we bring the perfect entertainment to make your event <span className="text-purple-400 font-semibold">unforgettable.</span>
+          we bring the perfect entertainment to make your event <span className="text-purple-700 font-bold">unforgettable.</span>
         </p>
         <div className="flex items-center justify-center gap-1.5 mt-4">
           <span className="w-9 h-1 rounded-full bg-gradient-to-r from-purple-600 to-purple-400"></span>
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
         </div>
       </motion.div>
 
@@ -511,7 +511,7 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                   }
                 }}
-                className={`group relative flex flex-col justify-between overflow-hidden rounded-[26px] cursor-pointer transition-all duration-500 ease-out ${item.rotationClass} w-[210px] lg:w-[245px] xl:w-[260px] h-[450px] lg:h-[490px] z-20 bg-gradient-to-b from-[#180e33]/90 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/25 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-purple-400/80 hover:shadow-[0_20px_45px_rgba(147,51,234,0.45)]`}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-[26px] cursor-pointer transition-all duration-500 ease-out ${item.rotationClass} w-[210px] lg:w-[245px] xl:w-[260px] h-[450px] lg:h-[490px] z-20 bg-gradient-to-b from-white/95 via-purple-50/90 to-purple-100/70 border border-purple-200/90 shadow-[0_15px_35px_rgba(147,51,234,0.1)] hover:border-purple-400 hover:shadow-[0_22px_45px_rgba(147,51,234,0.25)]`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -523,21 +523,21 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
                   <div>
                     {/* Header Row: Icon & Translucent Number */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 bg-purple-950/60 border-purple-400/40 text-purple-300 group-hover:border-purple-300 group-hover:text-white">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 bg-purple-100/80 border-purple-300 text-purple-700 group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:text-white">
                         <IconComponent className="w-5 h-5" />
                       </div>
-                      <span className="font-extrabold tracking-tight transition-colors duration-300 text-2xl text-purple-500/50 group-hover:text-purple-300">
+                      <span className="font-extrabold tracking-tight transition-colors duration-300 text-2xl text-purple-300 group-hover:text-purple-600">
                         {item.number}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-bold text-white mb-2 leading-tight transition-transform duration-300 text-xl">
+                    <h3 className="font-bold text-slate-900 mb-2 leading-tight transition-transform duration-300 text-xl group-hover:text-purple-950">
                       {item.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs lg:text-sm text-slate-300/80 font-normal leading-relaxed">
+                    <p className="text-xs lg:text-sm text-slate-600 font-normal leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -551,12 +551,12 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
                       decoding="async"
                       className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/40 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-purple-950/40 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
 
                 {/* Bottom Center Node */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 transition-all duration-300 z-30 bg-purple-500 border-purple-200 shadow-[0_0_12px_#a855f7] group-hover:bg-fuchsia-400 group-hover:scale-125" />
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 transition-all duration-300 z-30 bg-purple-600 border-white shadow-[0_0_12px_rgba(147,51,234,0.5)] group-hover:bg-fuchsia-500 group-hover:scale-125" />
               </motion.div>
             )
           })}
@@ -572,7 +572,7 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
         >
           {/* Subtle horizontal dashed connector line */}
           <div className="absolute top-[28px] left-[10%] right-[10%] pointer-events-none z-0">
-            <svg className="w-full h-8 text-purple-500/30" viewBox="0 0 1000 30" fill="none" preserveAspectRatio="none">
+            <svg className="w-full h-8 text-purple-400/50" viewBox="0 0 1000 30" fill="none" preserveAspectRatio="none">
               <path d="M 0,10 Q 500,30 1000,10" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 6" />
             </svg>
           </div>
@@ -583,18 +583,18 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
               return (
                 <div key={item.number} className="flex flex-col items-center text-center w-[180px] group cursor-pointer">
                   {/* Vertical Dotted Line */}
-                  <div className="w-0 h-6 border-l-2 border-dotted border-purple-400/50 mb-2 group-hover:border-purple-300 transition-colors" />
+                  <div className="w-0 h-6 border-l-2 border-dotted border-purple-400/60 mb-2 group-hover:border-purple-600 transition-colors" />
 
                   {/* Icon Circle */}
-                  <div className="w-10 h-10 rounded-full bg-[#180a30] border border-purple-500/40 flex items-center justify-center text-purple-300 shadow-[0_0_15px_rgba(147,51,234,0.25)] mb-2 group-hover:border-purple-300 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full bg-white border border-purple-200 flex items-center justify-center text-purple-700 shadow-[0_4px_15px_rgba(147,51,234,0.12)] mb-2 group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                     <BenefitIcon className="w-5 h-5" />
                   </div>
 
                   {/* Label */}
-                  <div className="text-xs font-semibold text-white leading-tight">
+                  <div className="text-xs font-bold text-slate-900 leading-tight">
                     {item.benefitTitle}
                   </div>
-                  <div className="text-[11px] text-slate-400 leading-tight">
+                  <div className="text-[11px] text-slate-600 leading-tight">
                     {item.benefitSubtitle}
                   </div>
                 </div>
@@ -618,7 +618,7 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                   }
                 }}
-                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[24px] bg-gradient-to-b from-[#180e33]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/30 p-5 cursor-pointer"
+                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[24px] bg-gradient-to-b from-white/95 via-purple-50/90 to-purple-100/80 border border-purple-200 shadow-lg p-5 cursor-pointer"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -626,17 +626,17 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-9 h-9 rounded-full bg-purple-950/60 border border-purple-400/40 flex items-center justify-center text-purple-300">
+                    <div className="w-9 h-9 rounded-full bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-700">
                       <IconComponent className="w-4 h-4" />
                     </div>
-                    <span className="text-2xl font-extrabold text-purple-400/60">{item.number}</span>
+                    <span className="text-2xl font-extrabold text-purple-300">{item.number}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-1.5">{item.title}</h3>
-                  <p className="text-xs text-slate-300/80 leading-relaxed mb-4">{item.description}</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-1.5">{item.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">{item.description}</p>
                 </div>
                 <div className="relative w-full h-[190px] rounded-xl overflow-hidden mt-auto">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-950/30 via-transparent to-transparent" />
                 </div>
               </motion.div>
             )
@@ -644,17 +644,17 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
         </div>
 
         {/* Mobile Benefits Grid */}
-        <div className="grid grid-cols-2 gap-4 px-4 mt-6 pt-6 border-t border-purple-900/40">
+        <div className="grid grid-cols-2 gap-4 px-4 mt-6 pt-6 border-t border-purple-200">
           {entertainerOccasionsData.map((item) => {
             const BenefitIcon = item.benefitIcon
             return (
-              <div key={item.number} className="flex items-center gap-3 p-2.5 rounded-xl bg-purple-950/30 border border-purple-500/20">
-                <div className="w-8 h-8 rounded-full bg-purple-900/50 flex items-center justify-center text-purple-300 shrink-0">
+              <div key={item.number} className="flex items-center gap-3 p-2.5 rounded-xl bg-white/80 border border-purple-200/80 shadow-sm">
+                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 shrink-0">
                   <BenefitIcon className="w-4 h-4" />
                 </div>
                 <div className="text-xs">
-                  <span className="block font-semibold text-white leading-tight">{item.benefitTitle}</span>
-                  <span className="text-[11px] text-slate-400 leading-tight">{item.benefitSubtitle}</span>
+                  <span className="block font-bold text-slate-900 leading-tight">{item.benefitTitle}</span>
+                  <span className="text-[11px] text-slate-600 leading-tight">{item.benefitSubtitle}</span>
                 </div>
               </div>
             )
