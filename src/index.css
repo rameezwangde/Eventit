@@ -23,6 +23,17 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile Performance & Hardware Acceleration Optimizations */
+img {
+  content-visibility: auto;
+}
+
+@media (max-width: 768px) {
+  .site-wrapper {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 button,
 input {
   font: inherit;

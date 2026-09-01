@@ -547,6 +547,8 @@ function ArtistEntertainmentOccasions({ onSelectTab }) {
                     <img 
                       src={item.image} 
                       alt={item.title} 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-[#070510]/40 to-transparent pointer-events-none" />
@@ -849,8 +851,10 @@ function RamadanPerformancesSection() {
             {/* Upper Photography Area */}
             <div className="relative w-full h-[300px] sm:h-[350px] lg:h-[370px] overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=1600&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=75&w=900&auto=format&fit=crop" 
                 alt="Arabic Entertainers" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#120726] via-[#120726]/30 to-transparent pointer-events-none" />
@@ -912,8 +916,10 @@ function RamadanPerformancesSection() {
             {/* Upper Photography Area */}
             <div className="relative w-full h-[300px] sm:h-[350px] lg:h-[370px] overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1600&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=75&w=900&auto=format&fit=crop" 
                 alt="Arabic Services" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#120726] via-[#120726]/30 to-transparent pointer-events-none" />
@@ -1110,6 +1116,8 @@ function EventSpecialistsSection() {
                   <img 
                     src={card.image} 
                     alt={card.title} 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0e071e] via-[#0e071e]/30 to-transparent pointer-events-none" />
