@@ -737,24 +737,24 @@ function IslamicMandalaPattern({ className = "w-40 h-40 text-purple-400/10" }) {
 
 function RamadanPerformancesSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#06040D] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f3e8ff] via-[#f8f4ff] to-[#eeddff] text-slate-900 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans">
       {/* Subtle purple radial background glows */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 w-[550px] h-[550px] bg-purple-900/20 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 translate-x-1/2 w-[550px] h-[550px] bg-fuchsia-950/20 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 w-[550px] h-[550px] bg-purple-300/40 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 translate-x-1/2 w-[550px] h-[550px] bg-fuchsia-200/50 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Islamic Arch Line-Art Framing on Far Left & Right Edges */}
-      <div className="absolute top-12 left-0 pointer-events-none hidden lg:block opacity-20">
-        <svg width="120" height="500" viewBox="0 0 120 500" fill="none" stroke="#A855F7" strokeWidth="1">
+      <div className="absolute top-12 left-0 pointer-events-none hidden lg:block opacity-30">
+        <svg width="120" height="500" viewBox="0 0 120 500" fill="none" stroke="#9333EA" strokeWidth="1">
           <path d="M0,0 Q90,120 90,250 Q90,380 0,500" strokeDasharray="4 4" />
           <path d="M0,40 Q60,140 60,250 Q60,360 0,460" />
-          <circle cx="60" cy="250" r="4" fill="#A855F7" />
+          <circle cx="60" cy="250" r="4" fill="#9333EA" />
         </svg>
       </div>
-      <div className="absolute top-12 right-0 pointer-events-none hidden lg:block opacity-20 transform scale-x-[-1]">
-        <svg width="120" height="500" viewBox="0 0 120 500" fill="none" stroke="#A855F7" strokeWidth="1">
+      <div className="absolute top-12 right-0 pointer-events-none hidden lg:block opacity-30 transform scale-x-[-1]">
+        <svg width="120" height="500" viewBox="0 0 120 500" fill="none" stroke="#9333EA" strokeWidth="1">
           <path d="M0,0 Q90,120 90,250 Q90,380 0,500" strokeDasharray="4 4" />
           <path d="M0,40 Q60,140 60,250 Q60,360 0,460" />
-          <circle cx="60" cy="250" r="4" fill="#A855F7" />
+          <circle cx="60" cy="250" r="4" fill="#9333EA" />
         </svg>
       </div>
 
@@ -765,10 +765,10 @@ function RamadanPerformancesSection() {
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
-        <RamadanLantern className="w-10 h-28 text-purple-400" />
+        <RamadanLantern className="w-10 h-28 text-purple-600" />
       </motion.div>
       <motion.div 
-        className="absolute top-12 left-20 sm:left-32 z-0 pointer-events-none hidden md:block opacity-40 blur-[1px]"
+        className="absolute top-12 left-20 sm:left-32 z-0 pointer-events-none hidden md:block opacity-40 blur-[0.5px]"
         animate={{ y: [0, 4, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -781,10 +781,10 @@ function RamadanPerformancesSection() {
         animate={{ y: [0, -5, 0] }}
         transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <RamadanLantern className="w-10 h-28 text-purple-400" />
+        <RamadanLantern className="w-10 h-28 text-purple-600" />
       </motion.div>
       <motion.div 
-        className="absolute top-12 right-20 sm:right-32 z-0 pointer-events-none hidden md:block opacity-40 blur-[1px]"
+        className="absolute top-12 right-20 sm:right-32 z-0 pointer-events-none hidden md:block opacity-40 blur-[0.5px]"
         animate={{ y: [0, 3, 0] }}
         transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -801,32 +801,32 @@ function RamadanPerformancesSection() {
       >
         {/* Geometric Islamic Ornament Above Heading */}
         <div className="flex items-center justify-center gap-3 mb-4">
-          <span className="w-12 sm:w-20 h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-purple-400/80" />
-          <IslamicStarOrnament className="w-5 h-5 text-purple-400" />
-          <span className="w-12 sm:w-20 h-[1px] bg-gradient-to-l from-transparent via-purple-500/50 to-purple-400/80" />
+          <span className="w-12 sm:w-20 h-[1px] bg-gradient-to-r from-transparent via-purple-400 to-purple-600" />
+          <IslamicStarOrnament className="w-5 h-5 text-purple-600" />
+          <span className="w-12 sm:w-20 h-[1px] bg-gradient-to-l from-transparent via-purple-400 to-purple-600" />
         </div>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.18] text-white mb-4 font-serif">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.18] text-slate-900 mb-4 font-serif">
           Curated Performances for<br />
-          <span className="bg-gradient-to-r from-purple-400 via-purple-300 to-fuchsia-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-700 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
             Ramadan Evenings
           </span>
         </h2>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base md:text-lg text-slate-300/80 max-w-2xl mx-auto leading-relaxed mb-6 font-normal">
+        <p className="text-sm sm:text-base md:text-lg text-purple-950/80 max-w-2xl mx-auto leading-relaxed mb-6 font-medium">
           Thoughtfully selected artists and experiences that honour the spirit,<br className="hidden sm:inline" />
           culture, and calm of Ramadan.
         </p>
 
         {/* Decorative Divider Under Subheading */}
         <div className="flex items-center justify-center gap-2">
-          <span className="w-8 h-[1px] bg-purple-500/40" />
-          <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
-          <IslamicStarOrnament className="w-4 h-4 text-purple-300" />
-          <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
-          <span className="w-8 h-[1px] bg-purple-500/40" />
+          <span className="w-8 h-[1px] bg-purple-400/60" />
+          <span className="w-1.5 h-1.5 rotate-45 bg-purple-500" />
+          <IslamicStarOrnament className="w-4 h-4 text-purple-600" />
+          <span className="w-1.5 h-1.5 rotate-45 bg-purple-500" />
+          <span className="w-8 h-[1px] bg-purple-400/60" />
         </div>
       </motion.div>
 
@@ -836,7 +836,7 @@ function RamadanPerformancesSection() {
           
           {/* LEFT PANEL: Arabic Entertainers */}
           <motion.div 
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-gradient-to-b from-[#160a2c]/95 via-[#100622]/95 to-[#090317]/98 border border-purple-500/50 shadow-[0_0_30px_rgba(147,51,234,0.2),0_15px_50px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_0_45px_rgba(168,85,247,0.4)] transition-all duration-700 ease-out cursor-pointer"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-gradient-to-b from-white/95 via-purple-50/90 to-purple-100/70 border border-purple-200/90 shadow-[0_15px_35px_rgba(147,51,234,0.1)] hover:border-purple-400 hover:shadow-[0_22px_45px_rgba(147,51,234,0.25)] transition-all duration-700 ease-out cursor-pointer"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -844,8 +844,8 @@ function RamadanPerformancesSection() {
             whileHover={{ y: -6 }}
           >
             {/* Corner Islamic Mandala Texture */}
-            <div className="absolute bottom-0 right-0 pointer-events-none opacity-10 transition-opacity duration-500 group-hover:opacity-20">
-              <IslamicMandalaPattern className="w-56 h-56 text-purple-300" />
+            <div className="absolute bottom-0 right-0 pointer-events-none opacity-15 transition-opacity duration-500 group-hover:opacity-25">
+              <IslamicMandalaPattern className="w-56 h-56 text-purple-600" />
             </div>
 
             {/* Upper Photography Area */}
@@ -857,19 +857,19 @@ function RamadanPerformancesSection() {
                 decoding="async"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#120726] via-[#120726]/30 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-100/80 via-transparent to-transparent pointer-events-none" />
 
               {/* Floating Oud Icon Circle */}
               <motion.div 
-                className="absolute top-6 left-6 w-14 h-14 rounded-full bg-purple-950/75 border border-purple-300/50 backdrop-blur-md flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.4)] z-20"
+                className="absolute top-6 left-6 w-14 h-14 rounded-full bg-white/90 border border-purple-200 backdrop-blur-md flex items-center justify-center shadow-[0_4px_20px_rgba(147,51,234,0.2)] z-20"
                 whileHover={{ y: -3 }}
               >
-                <OudIcon className="w-7 h-7 text-purple-200" />
+                <OudIcon className="w-7 h-7 text-purple-700" />
               </motion.div>
 
               {/* S-Wave Curved Mask Divider */}
               <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
-                <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 sm:h-20 text-[#120726] fill-current">
+                <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 sm:h-20 text-[#f7f2fe] fill-current">
                   <path d="M0,20 Q 250,85 500,10 L500,80 L0,80 Z" />
                 </svg>
               </div>
@@ -878,18 +878,18 @@ function RamadanPerformancesSection() {
             {/* Lower Content Area */}
             <div className="p-7 sm:p-9 relative z-20 pt-0 flex flex-col justify-between flex-1">
               <div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight font-serif">
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 tracking-tight font-serif group-hover:text-purple-950">
                   Arabic Entertainers
                 </h3>
                 
                 {/* Small Decorative Accent */}
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-6 h-[1px] bg-purple-400/60" />
-                  <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
+                  <span className="w-1.5 h-1.5 rotate-45 bg-purple-500" />
                   <span className="w-6 h-[1px] bg-purple-400/60" />
                 </div>
 
-                <p className="text-sm sm:text-base text-slate-300/85 font-normal leading-relaxed max-w-lg">
+                <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-lg">
                   Live performances rooted in Arabic culture—from soulful oud melodies to traditional dance forms that elevate the atmosphere.
                 </p>
               </div>
@@ -901,7 +901,7 @@ function RamadanPerformancesSection() {
 
           {/* RIGHT PANEL: Arabic Services */}
           <motion.div 
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-gradient-to-b from-[#160a2c]/95 via-[#100622]/95 to-[#090317]/98 border border-purple-500/50 shadow-[0_0_30px_rgba(147,51,234,0.2),0_15px_50px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_0_45px_rgba(168,85,247,0.4)] transition-all duration-700 ease-out cursor-pointer"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-gradient-to-b from-white/95 via-purple-50/90 to-purple-100/70 border border-purple-200/90 shadow-[0_15px_35px_rgba(147,51,234,0.1)] hover:border-purple-400 hover:shadow-[0_22px_45px_rgba(147,51,234,0.25)] transition-all duration-700 ease-out cursor-pointer"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -909,8 +909,8 @@ function RamadanPerformancesSection() {
             whileHover={{ y: -6 }}
           >
             {/* Corner Islamic Mandala Texture */}
-            <div className="absolute bottom-0 right-0 pointer-events-none opacity-10 transition-opacity duration-500 group-hover:opacity-20">
-              <IslamicMandalaPattern className="w-56 h-56 text-purple-300" />
+            <div className="absolute bottom-0 right-0 pointer-events-none opacity-15 transition-opacity duration-500 group-hover:opacity-25">
+              <IslamicMandalaPattern className="w-56 h-56 text-purple-600" />
             </div>
 
             {/* Upper Photography Area */}
@@ -922,19 +922,19 @@ function RamadanPerformancesSection() {
                 decoding="async"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#120726] via-[#120726]/30 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-100/80 via-transparent to-transparent pointer-events-none" />
 
               {/* Floating Dallah Coffee Pot Icon Circle */}
               <motion.div 
-                className="absolute top-6 left-6 w-14 h-14 rounded-full bg-purple-950/75 border border-purple-300/50 backdrop-blur-md flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.4)] z-20"
+                className="absolute top-6 left-6 w-14 h-14 rounded-full bg-white/90 border border-purple-200 backdrop-blur-md flex items-center justify-center shadow-[0_4px_20px_rgba(147,51,234,0.2)] z-20"
                 whileHover={{ y: -3 }}
               >
-                <DallahIcon className="w-7 h-7 text-purple-200" />
+                <DallahIcon className="w-7 h-7 text-purple-700" />
               </motion.div>
 
               {/* Mirrored S-Wave Curved Mask Divider */}
               <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
-                <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 sm:h-20 text-[#120726] fill-current">
+                <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 sm:h-20 text-[#f7f2fe] fill-current">
                   <path d="M0,10 Q 250,85 500,20 L500,80 L0,80 Z" />
                 </svg>
               </div>
@@ -943,18 +943,18 @@ function RamadanPerformancesSection() {
             {/* Lower Content Area */}
             <div className="p-7 sm:p-9 relative z-20 pt-0 flex flex-col justify-between flex-1">
               <div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight font-serif">
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 tracking-tight font-serif group-hover:text-purple-950">
                   Arabic Services
                 </h3>
                 
                 {/* Small Decorative Accent */}
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-6 h-[1px] bg-purple-400/60" />
-                  <span className="w-1.5 h-1.5 rotate-45 bg-purple-400" />
+                  <span className="w-1.5 h-1.5 rotate-45 bg-purple-500" />
                   <span className="w-6 h-[1px] bg-purple-400/60" />
                 </div>
 
-                <p className="text-sm sm:text-base text-slate-300/85 font-normal leading-relaxed max-w-lg">
+                <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-lg">
                   Authentic cultural services that bring tradition to life through hospitality, craft, and ceremonial experiences.
                 </p>
               </div>
@@ -968,8 +968,8 @@ function RamadanPerformancesSection() {
 
         {/* Center Connection Star Detail Between Both Panels */}
         <div className="hidden lg:flex items-center justify-center absolute left-1/2 bottom-8 -translate-x-1/2 pointer-events-none z-30">
-          <div className="w-9 h-9 rounded-full bg-[#180a30] border border-purple-400/70 flex items-center justify-center shadow-[0_0_20px_#c026d3]">
-            <IslamicStarOrnament className="w-5 h-5 text-fuchsia-300" />
+          <div className="w-9 h-9 rounded-full bg-white border border-purple-300 flex items-center justify-center shadow-[0_4px_20px_rgba(147,51,234,0.2)]">
+            <IslamicStarOrnament className="w-5 h-5 text-purple-600" />
           </div>
         </div>
       </div>
@@ -1022,35 +1022,35 @@ const specialistCardsData = [
 
 function EventSpecialistsSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#070511] text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 font-sans">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f3e8ff] via-[#f8f4ff] to-[#eeddff] text-slate-900 py-20 sm:py-28 px-4 sm:px-6 lg:px-8 font-sans">
       {/* Background Radial Glows & Waves */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-10 left-[-100px] w-[450px] h-[450px] bg-purple-900/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-[-100px] w-[450px] h-[450px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-300/40 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-10 left-[-100px] w-[450px] h-[450px] bg-fuchsia-200/50 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 right-[-100px] w-[450px] h-[450px] bg-purple-400/20 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Decorative Wave Lines behind cards */}
-      <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none z-0 opacity-20">
-        <svg className="w-full h-48 text-purple-500/40" viewBox="0 0 1200 200" fill="none" preserveAspectRatio="none">
+      <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none z-0 opacity-30">
+        <svg className="w-full h-48 text-purple-400/50" viewBox="0 0 1200 200" fill="none" preserveAspectRatio="none">
           <path d="M 0,100 Q 300,20 600,100 T 1200,100" stroke="currentColor" strokeWidth="1.5" />
           <path d="M 0,140 Q 300,60 600,140 T 1200,140" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
         </svg>
       </div>
 
       {/* Faint Dotted Matrix at bottom corners */}
-      <div className="absolute bottom-8 left-8 opacity-15 pointer-events-none hidden sm:block">
+      <div className="absolute bottom-8 left-8 opacity-30 pointer-events-none hidden sm:block">
         <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
           {Array.from({ length: 4 }).map((_, r) =>
             Array.from({ length: 6 }).map((_, c) => (
-              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#A855F7" />
+              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#9333EA" />
             ))
           )}
         </svg>
       </div>
-      <div className="absolute bottom-8 right-8 opacity-15 pointer-events-none hidden sm:block">
+      <div className="absolute bottom-8 right-8 opacity-30 pointer-events-none hidden sm:block">
         <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
           {Array.from({ length: 4 }).map((_, r) =>
             Array.from({ length: 6 }).map((_, c) => (
-              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#A855F7" />
+              <circle key={`${r}-${c}`} cx={c * 20 + 10} cy={r * 20 + 10} r="2" fill="#9333EA" />
             ))
           )}
         </svg>
@@ -1065,34 +1065,34 @@ function EventSpecialistsSection() {
         transition={{ duration: 0.7 }}
       >
         <div className="flex items-center justify-center gap-3 mb-4">
-          <span className="w-12 sm:w-16 h-[1px] bg-purple-500/40" />
-          <span className="w-2.5 h-2.5 rotate-45 border border-purple-400/80" />
-          <span className="w-10 sm:w-14 h-[1px] bg-purple-500/40" />
-          <div className="w-7 h-7 rounded-full bg-purple-950/80 border border-purple-400/60 flex items-center justify-center text-purple-300 shadow-[0_0_12px_rgba(168,85,247,0.4)]">
-            <Star className="w-3.5 h-3.5 fill-purple-300" />
+          <span className="w-12 sm:w-16 h-[1px] bg-purple-400/60" />
+          <span className="w-2.5 h-2.5 rotate-45 border border-purple-500/80" />
+          <span className="w-10 sm:w-14 h-[1px] bg-purple-400/60" />
+          <div className="w-7 h-7 rounded-full bg-white border border-purple-300 flex items-center justify-center text-purple-600 shadow-[0_4px_12px_rgba(147,51,234,0.15)]">
+            <Star className="w-3.5 h-3.5 fill-purple-600" />
           </div>
-          <span className="w-10 sm:w-14 h-[1px] bg-purple-500/40" />
-          <span className="w-2.5 h-2.5 rotate-45 border border-purple-400/80" />
-          <span className="w-12 sm:w-16 h-[1px] bg-purple-500/40" />
+          <span className="w-10 sm:w-14 h-[1px] bg-purple-400/60" />
+          <span className="w-2.5 h-2.5 rotate-45 border border-purple-500/80" />
+          <span className="w-12 sm:w-16 h-[1px] bg-purple-400/60" />
         </div>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight leading-[1.15] text-white mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight leading-[1.15] text-slate-900 mb-4">
           Explore Event Specialists &<br />
-          <span className="bg-gradient-to-r from-purple-500 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-700 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
             Professional Staff for Event
           </span>
         </h2>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base md:text-lg text-slate-300/80 max-w-2xl mx-auto leading-relaxed mb-6 font-normal">
+        <p className="text-sm sm:text-base md:text-lg text-purple-950/80 max-w-2xl mx-auto leading-relaxed mb-6 font-medium">
           From creative experts to skilled professionals,<br className="hidden sm:inline" />
           find everything you need to bring your event to life.
         </p>
 
         {/* EventIt Two Short Lines Divider */}
         <div className="flex items-center justify-center gap-2">
-          <span className="w-10 h-1 rounded-full bg-purple-500" />
+          <span className="w-10 h-1 rounded-full bg-gradient-to-r from-purple-600 to-purple-500" />
           <span className="w-2.5 h-1 rounded-full bg-purple-400" />
         </div>
       </motion.div>
@@ -1104,7 +1104,7 @@ function EventSpecialistsSection() {
             return (
               <motion.div
                 key={card.title}
-                className={`group relative flex flex-col justify-between overflow-hidden rounded-[30px] cursor-pointer transition-all duration-600 ease-out ${card.rotationClass} w-[220px] lg:w-[260px] xl:w-[275px] min-h-[560px] lg:min-h-[600px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:border-purple-400 hover:shadow-[0_20px_50px_rgba(168,85,247,0.45)]`}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-[30px] cursor-pointer transition-all duration-600 ease-out ${card.rotationClass} w-[220px] lg:w-[260px] xl:w-[275px] min-h-[560px] lg:min-h-[600px] bg-gradient-to-b from-white/95 via-purple-50/90 to-purple-100/70 border border-purple-200/90 shadow-[0_15px_35px_rgba(147,51,234,0.1)] hover:border-purple-400 hover:shadow-[0_22px_45px_rgba(147,51,234,0.25)]`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1120,11 +1120,11 @@ function EventSpecialistsSection() {
                     decoding="async"
                     className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e071e] via-[#0e071e]/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-100/80 via-transparent to-transparent pointer-events-none" />
 
                   {/* Organic Wave Divider Mask at bottom of image */}
                   <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
-                    <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 text-[#0e071e] fill-current">
+                    <svg viewBox="0 0 500 80" preserveAspectRatio="none" className="w-full h-14 text-[#f7f2fe] fill-current">
                       <path d="M0,30 Q 250,75 500,20 L500,80 L0,80 Z" />
                     </svg>
                   </div>
@@ -1134,31 +1134,31 @@ function EventSpecialistsSection() {
                 <div className="p-6 relative z-20 flex flex-col justify-between flex-1">
                   <div>
                     {/* Category Number */}
-                    <div className="text-purple-400 font-extrabold text-3xl lg:text-4xl mb-1 tracking-tight group-hover:text-purple-300 transition-colors">
+                    <div className="text-purple-400 font-extrabold text-3xl lg:text-4xl mb-1 tracking-tight group-hover:text-purple-600 transition-colors">
                       {card.number}
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-2 leading-tight font-sans whitespace-pre-line">
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2 leading-tight font-sans whitespace-pre-line group-hover:text-purple-950">
                       {card.title}
                     </h3>
 
                     {/* Decorative Line: ━━━━ • ━ */}
                     <div className="flex items-center gap-1.5 mb-3">
-                      <span className="w-7 h-[2px] bg-purple-500/70" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shadow-[0_0_8px_#a855f7]" />
-                      <span className="w-3 h-[2px] bg-purple-500/50" />
+                      <span className="w-7 h-[2px] bg-purple-400/70" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_#a855f7]" />
+                      <span className="w-3 h-[2px] bg-purple-400/50" />
                     </div>
 
                     {/* Description */}
-                    <p className="text-xs lg:text-sm text-slate-300/80 font-normal leading-relaxed">
+                    <p className="text-xs lg:text-sm text-slate-600 font-normal leading-relaxed">
                       {card.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Concentrated Purple Bottom Border Glow */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-purple-400 shadow-[0_0_15px_#c026d3] z-30 group-hover:w-36 group-hover:bg-fuchsia-400 transition-all duration-500" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-purple-500 shadow-[0_0_15px_rgba(147,51,234,0.5)] z-30 group-hover:w-36 group-hover:bg-purple-600 transition-all duration-500" />
               </motion.div>
             )
           })}
@@ -1172,7 +1172,7 @@ function EventSpecialistsSection() {
             return (
               <motion.div
                 key={card.title}
-                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[26px] bg-gradient-to-b from-[#160a2c]/95 via-[#0e071e]/95 to-[#070510]/98 border border-purple-500/40 p-5 relative"
+                className="snap-center shrink-0 w-[82vw] max-w-[320px] flex flex-col justify-between overflow-hidden rounded-[26px] bg-gradient-to-b from-white/95 via-purple-50/90 to-purple-100/80 border border-purple-200 p-5 shadow-lg relative"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -1180,13 +1180,13 @@ function EventSpecialistsSection() {
               >
                 <div className="relative w-full h-[180px] rounded-2xl overflow-hidden mb-4">
                   <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e071e] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-950/20 via-transparent to-transparent" />
                 </div>
 
                 <div>
                   <div className="text-purple-400 font-extrabold text-2xl mb-1">{card.number}</div>
-                  <h3 className="text-xl font-bold text-white mb-2 whitespace-pre-line">{card.title}</h3>
-                  <p className="text-xs text-slate-300/80 leading-relaxed">{card.description}</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 whitespace-pre-line">{card.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{card.description}</p>
                 </div>
               </motion.div>
             )
