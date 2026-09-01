@@ -2487,9 +2487,6 @@ function App() {
           <TrustedBrands />
           <FeaturedCategories />
           <ExploreServices />
-          <ArtistEntertainmentOccasions onSelectTab={setActiveTab} />
-          <RamadanPerformancesSection />
-          <EventSpecialistsSection />
           <HowItWorks />
           <TrendingCollections />
           <WhyChooseUs />
