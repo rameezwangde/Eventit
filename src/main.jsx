@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import './index.css'
 
-const navItems = ['Explore', 'Vendors', 'Artists', 'Events', 'Packages', 'Inspiration']
+const navItems = ['Explore', 'Artists', 'Vendors', 'Events', 'Packages', 'Inspiration']
 
 import logoUrl from '../Eventit 1.png'
 
